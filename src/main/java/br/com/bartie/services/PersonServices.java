@@ -32,9 +32,31 @@ public class PersonServices {
 
     public Person get(String id) {
 
-        logger.info("Find one person! >> " + id);
+        logger.info("Get one person! >> " + id);
 
         return mockPerson();
+
+    }
+
+    public Person add(Person person) {
+
+        logger.info("Create one person! >> " + person.firstName);
+
+        return person;
+
+    }
+
+    public Person save(Person person) {
+
+        logger.info("Save one person! >> " + person.firstName);
+
+        return person;
+
+    }
+
+    public void delete(String id) {
+
+        logger.info("Delete one person! >> " + id);
 
     }
 
