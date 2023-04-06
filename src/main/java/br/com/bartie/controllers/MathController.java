@@ -1,4 +1,4 @@
-package br.com.bartie.backendapispringjava;
+package br.com.bartie.controllers;
 
 import br.com.bartie.converters.NumberConverter;
 import br.com.bartie.exceptions.UnsupportedMathOperationException;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class MathController {
 
-    // private final AtomicLong counter = new AtomicLong();
+//    private final AtomicLong counter = new AtomicLong();
 
     private SimpleMatch math = new SimpleMatch();
 

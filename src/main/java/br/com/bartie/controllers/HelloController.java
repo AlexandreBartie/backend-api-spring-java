@@ -1,4 +1,4 @@
-package br.com.bartie.backendapispringjava;
+package br.com.bartie.controllers;
 
 import java.util.concurrent.atomic.AtomicLong;
 
