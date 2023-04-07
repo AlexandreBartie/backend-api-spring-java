@@ -1,5 +1,3 @@
-package br.com.bartie.converters;
-
 public class NumberConverter {
 
     public static Double toDouble(String strNumber) {

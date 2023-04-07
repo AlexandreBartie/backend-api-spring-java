@@ -1,3 +1,7 @@
+package br.com.bartie.repositories;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface PersonDTO extends JpaRepository<Person, log> {}
+import br.com.bartie.models.Person;
+
+public interface PersonDTO extends JpaRepository<Person, Long> {}

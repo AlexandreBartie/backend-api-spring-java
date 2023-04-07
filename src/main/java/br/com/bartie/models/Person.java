@@ -2,6 +2,7 @@ package br.com.bartie.models;
 
 import java.io.Serializable;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,16 +19,16 @@ public class Person implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
 
-    @Column(nullable = false, lenght = 100)
+    @Column(nullable = false, length = 100)
     public String firstName;
 
-    @Column(nullable = false, lenght = 100)
+    @Column(nullable = false, length = 100)
     public String lastName;
     
-    @Column(nullable = false, lenght = 100)
+    @Column(nullable = false, length = 100)
     public String address;
     
-    @Column(nullable = false, lenght = 10)
+    @Column(nullable = false, length = 10)
     public String gender;
     
 }
