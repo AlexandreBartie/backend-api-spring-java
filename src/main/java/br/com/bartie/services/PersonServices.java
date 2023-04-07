@@ -1,32 +1,27 @@
 package br.com.bartie.services;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicLong;
 import java.util.logging.Logger;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.bartie.models.Person;
+import br.com.bartie.repositories.PersonDTO;
 
 @Service
 public class PersonServices {
 
-    private final AtomicLong counter = new AtomicLong();
-
     private Logger logger = Logger.getLogger(PersonServices.class.getName());
+
+    @Autowired
+    private PersonDTO repository;
 
     public List<Person> getAll() {
 
         logger.info("Get all persons!");
 
-        List<Person> persons = new ArrayList<>();
-
-        for (long index = 0; index < 8; index++) {
-            persons.add(mockPerson());
-        }
-
-        return persons;
+        return repository.findAll();
 
     }
 
@@ -64,7 +59,7 @@ public class PersonServices {
 
         Person person = new Person();
 
-        long index = counter.incrementAndGet();
+        long index = 1; // counter.incrementAndGet();
 
         person.id = index;
         person.firstName = "FistName#" + index ;

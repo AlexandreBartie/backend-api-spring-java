@@ -3,14 +3,14 @@ spring:
         dbcp2:
             driver-class-name: com.mysql.cj.jdbc.Driver
             url: jdbc:mysql://localhost:3306/Java
-            username: user
-            password: password
+            username: root
+            password: admin
     jpa:
         hibernate:
             ddl-auto: update
         properties:
             hibernate:
             dialect: org.hibernate.dialect.MySQL8Dialect
-            show-sql: true
+            show-sql: false
 
 
