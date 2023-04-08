@@ -7,10 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 
-@Entity
-@Table(name = "person")
+@Entity()
 public class Person implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -30,5 +28,9 @@ public class Person implements Serializable {
     
     @Column(nullable = false, length = 10)
     public String gender;
+
+    public String fullName() {
+        return lastName + " " + firstName;
+    }
     
 }

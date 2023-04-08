@@ -27,16 +27,19 @@ public class PersonServices {
     }
 
     public Person get(Long id) {
+        
+        Person item = repository.findById(id)
+        .orElseThrow(() -> new ResourceNotFoundException("No record found!"));
 
-        logger.info("Get one person! >> " + id);
+        logger.info("Get one person! >> " + item.fullName());
 
-        return repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Notttttt"));
+        return item;
 
     }
 
     public Person add(Person person) {
 
-        logger.info("Create one person! >> " + person.firstName);
+        logger.info("Create one person! >> " + person.fullName());
 
         return repository.save(person);
 
@@ -44,21 +47,25 @@ public class PersonServices {
 
     public Person save(Person person) {
 
-        logger.info("Save one person! >> " + person.firstName);
-
         return repository.save(person);
+
+    }
+
+    public void delete(Person person) {
+
+        logger.info("Delete one person! >> " + person.fullName());
+
+        repository.delete(person);
 
     }
 
     public void delete(Long id) {
 
-        var person = get(id);
+        Person item = get(id);
 
-        if (person != null)
+        if (item != null)
         {
-            logger.info("Delete one person! >> " + id);
-
-            repository.delete(person);
+            delete(item);
         }
 
     }

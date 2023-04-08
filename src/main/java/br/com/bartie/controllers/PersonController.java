@@ -20,7 +20,7 @@ public class PersonController {
     @Autowired
     private PersonServices service;
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(method = RequestMethod.GET, value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Person get(@PathVariable(value = "id") Long id) {
         return service.get(id);
     }
@@ -35,7 +35,7 @@ public class PersonController {
         return service.save(person);
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
     public void delete(@PathVariable(value = "id") Long id) {
         service.delete(id);
     }
