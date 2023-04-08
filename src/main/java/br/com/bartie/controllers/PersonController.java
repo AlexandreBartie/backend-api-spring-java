@@ -5,6 +5,7 @@ import br.com.bartie.services.PersonServices;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,10 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/person")
 public class PersonController {
 
-    private PersonServices service = new PersonServices();
+    @Autowired
+    private PersonServices service;
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Person get(@PathVariable(value = "id") String id) {
+    public Person get(@PathVariable(value = "id") Long id) {
         return service.get(id);
     }
 
@@ -33,8 +35,8 @@ public class PersonController {
         return service.save(person);
     }
 
-    @RequestMapping(value = "/{id}")
-    public void delete(@PathVariable(value = "id") String id) {
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public void delete(@PathVariable(value = "id") Long id) {
         service.delete(id);
     }
 

@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.bartie.exceptions.ResourceNotFoundException;
 import br.com.bartie.models.Person;
 import br.com.bartie.repositories.PersonDTO;
 
@@ -16,7 +17,7 @@ public class PersonServices {
 
     @Autowired
     private PersonDTO repository;
-
+    
     public List<Person> getAll() {
 
         logger.info("Get all persons!");
@@ -25,11 +26,11 @@ public class PersonServices {
 
     }
 
-    public Person get(String id) {
+    public Person get(Long id) {
 
         logger.info("Get one person! >> " + id);
 
-        return mockPerson();
+        return repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Notttttt"));
 
     }
 
@@ -37,7 +38,7 @@ public class PersonServices {
 
         logger.info("Create one person! >> " + person.firstName);
 
-        return person;
+        return repository.save(person);
 
     }
 
@@ -45,29 +46,36 @@ public class PersonServices {
 
         logger.info("Save one person! >> " + person.firstName);
 
-        return person;
+        return repository.save(person);
 
     }
 
-    public void delete(String id) {
+    public void delete(Long id) {
 
-        logger.info("Delete one person! >> " + id);
+        var person = get(id);
+
+        if (person != null)
+        {
+            logger.info("Delete one person! >> " + id);
+
+            repository.delete(person);
+        }
 
     }
 
-    private Person mockPerson() {
+    // private Person mockPerson() {
 
-        Person person = new Person();
+    //     Person person = new Person();
 
-        long index = 1; // counter.incrementAndGet();
+    //     long index = 1; // counter.incrementAndGet();
 
-        person.id = index;
-        person.firstName = "FistName#" + index ;
-        person.lastName = "LastName#" + index ;
-        person.address = "Adress#" + index ;
-        person.gender = "Gender#" + index ;
+    //     person.id = index;
+    //     person.firstName = "FistName#" + index ;
+    //     person.lastName = "LastName#" + index ;
+    //     person.address = "Adress#" + index ;
+    //     person.gender = "Gender#" + index ;
 
-        return person;
-    }
+    //     return person;
+    // }
     
 }
