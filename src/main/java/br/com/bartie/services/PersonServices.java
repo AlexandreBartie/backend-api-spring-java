@@ -6,9 +6,11 @@ import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.bartie.exceptions.ResourceNotFoundException;
 import br.com.bartie.models.Person;
-import br.com.bartie.repositories.PersonDTO;
+import br.com.bartie.repositories.PersonRepository;
+import br.com.bartie.exceptions.ResourceNotFoundException;
+
+
 
 @Service
 public class PersonServices {
@@ -16,7 +18,7 @@ public class PersonServices {
     private Logger logger = Logger.getLogger(PersonServices.class.getName());
 
     @Autowired
-    private PersonDTO repository;
+    private PersonRepository repository;
     
     public List<Person> getAll() {
 
