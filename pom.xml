@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>br.com.bartie</groupId>
 	<artifactId>backend-api-spring-java</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>backend-api-spring-java</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>

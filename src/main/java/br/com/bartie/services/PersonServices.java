@@ -7,63 +7,74 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.bartie.models.Person;
+import br.com.bartie.data.PersonDTO;
 import br.com.bartie.repositories.PersonRepository;
 import br.com.bartie.exceptions.ResourceNotFoundException;
-
-
+import br.com.bartie.mapper.PersonMapper;
 
 @Service
 public class PersonServices {
 
     private Logger logger = Logger.getLogger(PersonServices.class.getName());
 
-    @Autowired
+    @Autowired   
+    private PersonMapper mapper;
+
+    @Autowired   
     private PersonRepository repository;
     
-    public List<Person> getAll() {
+    public List<PersonDTO> getAll() {
 
         logger.info("Get all persons!");
 
-        return repository.findAll();
+        return mapper.parseDTO(repository.findAll());
 
     }
 
-    public Person get(Long id) {
+    public PersonDTO get(Long id) {
         
         Person item = repository.findById(id)
         .orElseThrow(() -> new ResourceNotFoundException("No record found!"));
 
         logger.info("Get one person! >> " + item.fullName());
 
-        return item;
+        return mapper.parseDTO(item);
 
     }
 
-    public Person add(Person person) {
+    public PersonDTO create(PersonDTO person) {
 
-        logger.info("Create one person! >> " + person.fullName());
+        Person item = mapper.parse(person);
 
-        return repository.save(person);
+        logger.info("Create one person! >> " + item.fullName());
 
-    }
-
-    public Person save(Person person) {
-
-        return repository.save(person);
+        return mapper.parseDTO(repository.save(item));
 
     }
 
-    public void delete(Person person) {
+    public PersonDTO update(PersonDTO person) {
 
-        logger.info("Delete one person! >> " + person.fullName());
+        Person item = mapper.parse(person);
 
-        repository.delete(person);
+        logger.info("Update one person! >> " + item.fullName());
+
+        return mapper.parseDTO(repository.save(item));
+
+    }
+
+    public void delete(PersonDTO person) {
+
+        Person item = mapper.parse(person);
+
+        logger.info("Update one person! >> " + item.fullName());
+
+        repository.delete(item);
 
     }
 
     public void delete(Long id) {
 
-        Person item = get(id);
+        PersonDTO item = get(id);
 
         if (item != null)
         {
@@ -71,20 +82,5 @@ public class PersonServices {
         }
 
     }
-
-    // private Person mockPerson() {
-
-    //     Person person = new Person();
-
-    //     long index = 1; // counter.incrementAndGet();
-
-    //     person.id = index;
-    //     person.firstName = "FistName#" + index ;
-    //     person.lastName = "LastName#" + index ;
-    //     person.address = "Adress#" + index ;
-    //     person.gender = "Gender#" + index ;
-
-    //     return person;
-    // }
     
 }

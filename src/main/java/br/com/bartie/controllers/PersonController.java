@@ -1,6 +1,6 @@
 package br.com.bartie.controllers;
 
-import br.com.bartie.models.Person;
+import br.com.bartie.data.PersonDTO;
 import br.com.bartie.services.PersonServices;
 
 
@@ -26,18 +26,18 @@ public class PersonController {
     private PersonServices service;
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Person get(@PathVariable(value = "id") Long id) {
+    public PersonDTO get(@PathVariable(value = "id") Long id) {
         return service.get(id);
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Person add(@RequestBody Person person) {
-        return service.save(person);
+    public PersonDTO add(@RequestBody PersonDTO person) {
+        return service.create(person);
     }
 
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Person save(@RequestBody Person person) {
-        return service.save(person);
+    public PersonDTO save(@RequestBody PersonDTO person) {
+        return service.update(person);
     }
 
     @DeleteMapping(value = "/{id}")
@@ -47,7 +47,7 @@ public class PersonController {
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Person> getAll() {
+    public List<PersonDTO> getAll() {
         return service.getAll();
     }
 
