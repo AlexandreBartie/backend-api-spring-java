@@ -8,22 +8,20 @@ import java.util.List;
 
 public class PersonMapper {
 
-    private Mapper mapper = new Mapper();
-
-    public Person parse(PersonDTO source) {
-        return mapper.parse(source, Person.class);
+    public static Person parse(PersonDTO source) {
+        return Mapper.parse(source, Person.class);
     }
-    public PersonDTO parseDTO(Person source)
+    public static PersonDTO parseDTO(Person source)
     {
-        return mapper.parse(source, PersonDTO.class);
+        return Mapper.parse(source, PersonDTO.class);
     }
 
-    public List<Person> parse(List<PersonDTO> source) {
-        return mapper.parse(source, Person.class);
+    public static List<Person> parse(List<PersonDTO> source) {
+        return Mapper.parse(source, Person.class);
 	}
 
-    public List<PersonDTO> parseDTO(List<Person> source) {
-        return mapper.parse(source, PersonDTO.class);
+    public static List<PersonDTO> parseDTO(List<Person> source) {
+        return Mapper.parse(source, PersonDTO.class);
 	}
 
 }

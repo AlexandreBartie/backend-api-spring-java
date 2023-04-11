@@ -18,16 +18,13 @@ public class PersonServices {
     private Logger logger = Logger.getLogger(PersonServices.class.getName());
 
     @Autowired   
-    private PersonMapper mapper;
-
-    @Autowired   
     private PersonRepository repository;
     
     public List<PersonDTO> getAll() {
 
         logger.info("Get all persons!");
 
-        return mapper.parseDTO(repository.findAll());
+        return PersonMapper.parseDTO(repository.findAll());
 
     }
 
@@ -38,33 +35,33 @@ public class PersonServices {
 
         logger.info("Get one person! >> " + item.fullName());
 
-        return mapper.parseDTO(item);
+        return PersonMapper.parseDTO(item);
 
     }
 
     public PersonDTO create(PersonDTO person) {
 
-        Person item = mapper.parse(person);
+        Person item = PersonMapper.parse(person);
 
         logger.info("Create one person! >> " + item.fullName());
 
-        return mapper.parseDTO(repository.save(item));
+        return PersonMapper.parseDTO(repository.save(item));
 
     }
 
     public PersonDTO update(PersonDTO person) {
 
-        Person item = mapper.parse(person);
+        Person item = PersonMapper.parse(person);
 
         logger.info("Update one person! >> " + item.fullName());
 
-        return mapper.parseDTO(repository.save(item));
+        return PersonMapper.parseDTO(repository.save(item));
 
     }
 
     public void delete(PersonDTO person) {
 
-        Person item = mapper.parse(person);
+        Person item = PersonMapper.parse(person);
 
         logger.info("Update one person! >> " + item.fullName());
 
