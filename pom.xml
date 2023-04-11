@@ -15,7 +15,7 @@
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>20</java.version>
-		<mysql.version>8.0.32</mysql.version>
+		<mysql.version>8.0.29</mysql.version>
 		<lombok.version>1.18.26</lombok.version>
 		<mapper.version>3.1.1</mapper.version>
 	</properties>

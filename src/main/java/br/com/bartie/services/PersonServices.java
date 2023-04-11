@@ -8,10 +8,9 @@ import org.springframework.stereotype.Service;
 
 import br.com.bartie.models.Person;
 import br.com.bartie.data.PersonDTO;
+import br.com.bartie.mapper.PersonMapper;
 import br.com.bartie.repositories.PersonRepository;
 import br.com.bartie.exceptions.ResourceNotFoundException;
-import br.com.bartie.mapper.PersonMapper;
-
 @Service
 public class PersonServices {
 
@@ -33,7 +32,7 @@ public class PersonServices {
         Person item = repository.findById(id)
         .orElseThrow(() -> new ResourceNotFoundException("No record found!"));
 
-        logger.info("Get one person! >> " + item.fullName());
+        logger.info("Get one person! >> " + item.getFirstName());
 
         return PersonMapper.parseDTO(item);
 
@@ -43,7 +42,7 @@ public class PersonServices {
 
         Person item = PersonMapper.parse(person);
 
-        logger.info("Create one person! >> " + item.fullName());
+        logger.info("Create one person! >> " + item.getFirstName());
 
         return PersonMapper.parseDTO(repository.save(item));
 
@@ -53,7 +52,7 @@ public class PersonServices {
 
         Person item = PersonMapper.parse(person);
 
-        logger.info("Update one person! >> " + item.fullName());
+        logger.info("Update one person! >> " + item.getFirstName());
 
         return PersonMapper.parseDTO(repository.save(item));
 
@@ -63,7 +62,7 @@ public class PersonServices {
 
         Person item = PersonMapper.parse(person);
 
-        logger.info("Update one person! >> " + item.fullName());
+        logger.info("Update one person! >> " + item.getFirstName());
 
         repository.delete(item);
 
