@@ -7,9 +7,9 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import br.com.bartie.models.Person;
-import br.com.bartie.data.PersonDTO;
-import br.com.bartie.mapper.PersonMapper;
+import br.com.bartie.api.v1.mapper.PersonMapper;
+import br.com.bartie.api.v1.view.PersonDTO;
+import br.com.bartie.data.models.Person;
 import br.com.bartie.unitTest.PersonMock;
 
 public class MapperTest {

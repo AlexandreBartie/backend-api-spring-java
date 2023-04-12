@@ -1,8 +1,7 @@
-package br.com.bartie.controllers;
+package br.com.bartie.api.v2.controllers;
 
-import br.com.bartie.data.PersonDTO;
-import br.com.bartie.services.PersonServices;
-
+import br.com.bartie.api.v2.services.PersonServicesV2;
+import br.com.bartie.api.v2.view.PersonDTO;
 
 import java.util.List;
 
@@ -19,11 +18,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/person")
-public class PersonController {
+@RequestMapping("/person/v2")
+public class PersonControllerV2 {
 
     @Autowired
-    private PersonServices service;
+    private PersonServicesV2 service;
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public PersonDTO get(@PathVariable(value = "id") Long id) {

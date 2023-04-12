@@ -1,4 +1,4 @@
-package br.com.bartie.core;
+package br.com.bartie.app.core;
 
 import java.util.ArrayList;
 import java.util.List;

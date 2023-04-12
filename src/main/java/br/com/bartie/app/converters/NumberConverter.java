@@ -1,4 +1,4 @@
-package br.com.bartie.converters;
+package br.com.bartie.app.converters;
 
 public class NumberConverter {
 

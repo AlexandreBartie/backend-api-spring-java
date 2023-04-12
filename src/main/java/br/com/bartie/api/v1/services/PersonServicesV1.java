@@ -1,4 +1,4 @@
-package br.com.bartie.services;
+package br.com.bartie.api.v1.services;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -6,15 +6,15 @@ import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.bartie.models.Person;
-import br.com.bartie.data.PersonDTO;
-import br.com.bartie.mapper.PersonMapper;
-import br.com.bartie.repositories.PersonRepository;
-import br.com.bartie.exceptions.ResourceNotFoundException;
+import br.com.bartie.api.v1.mapper.PersonMapper;
+import br.com.bartie.api.v1.view.PersonDTO;
+import br.com.bartie.app.exceptions.ResourceNotFoundException;
+import br.com.bartie.data.models.Person;
+import br.com.bartie.data.repositories.PersonRepository;
 @Service
-public class PersonServices {
+public class PersonServicesV1 {
 
-    private Logger logger = Logger.getLogger(PersonServices.class.getName());
+    private Logger logger = Logger.getLogger(PersonServicesV1.class.getName());
 
     @Autowired   
     private PersonRepository repository;

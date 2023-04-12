@@ -1,8 +1,8 @@
-package br.com.bartie.mapper;
+package br.com.bartie.api.v2.mapper;
 
-import br.com.bartie.models.Person;
-import br.com.bartie.core.Mapper;
-import br.com.bartie.data.PersonDTO;
+import br.com.bartie.api.v2.view.PersonDTO;
+import br.com.bartie.app.core.Mapper;
+import br.com.bartie.data.models.Person;
 
 import java.util.List;
 

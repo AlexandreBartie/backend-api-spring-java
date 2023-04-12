@@ -1,4 +1,4 @@
-package br.com.bartie.exceptions;
+package br.com.bartie.app.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

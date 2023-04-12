@@ -1,4 +1,4 @@
-package br.com.bartie.data;
+package br.com.bartie.api.v1.view;
 
 import java.io.Serializable;
 

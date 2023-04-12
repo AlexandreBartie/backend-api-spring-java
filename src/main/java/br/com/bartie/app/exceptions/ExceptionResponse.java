@@ -1,4 +1,4 @@
-package br.com.bartie.exceptions;
+package br.com.bartie.app.exceptions;
 
 import java.io.Serializable;
 import java.util.Date;

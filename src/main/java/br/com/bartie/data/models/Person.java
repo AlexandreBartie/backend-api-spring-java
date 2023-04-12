@@ -1,4 +1,4 @@
-package br.com.bartie.models;
+package br.com.bartie.data.models;
 
 import java.io.Serializable;
 

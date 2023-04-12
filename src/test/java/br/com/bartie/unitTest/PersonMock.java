@@ -3,8 +3,8 @@ package br.com.bartie.unitTest;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.bartie.data.PersonDTO;
-import br.com.bartie.models.Person;
+import br.com.bartie.api.v1.view.PersonDTO;
+import br.com.bartie.data.models.Person;
 
 public class PersonMock {
 
