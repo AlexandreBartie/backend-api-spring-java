@@ -1,7 +1,7 @@
 package br.com.bartie.api.v2.view;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -33,6 +33,6 @@ public class PersonDTO implements Serializable {
 	private String gender;
 
 	private String address;
-	private Date birthday;
+	private LocalDate birthday = LocalDate.now();
 
 }

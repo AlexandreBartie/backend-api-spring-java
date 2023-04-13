@@ -18,6 +18,7 @@
 		<mysql.version>8.0.29</mysql.version>
 		<lombok.version>1.18.26</lombok.version>
 		<mapper.version>3.1.1</mapper.version>
+		<fasterxml.version>2.14.2</fasterxml.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -62,7 +63,17 @@
 			<groupId>org.modelmapper</groupId>
 			<artifactId>modelmapper</artifactId>
 			<version>${mapper.version}</version>
-		</dependency>		
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.dataformat</groupId>
+			<artifactId>jackson-dataformat-xml</artifactId>
+			<version>${fasterxml.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.dataformat</groupId>
+			<artifactId>jackson-dataformat-yaml</artifactId>
+			<version>${fasterxml.version}</version>
+		</dependency>			
 	</dependencies>
 
 	<build>
