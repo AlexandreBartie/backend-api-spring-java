@@ -33,7 +33,7 @@ public class PersonServicesV2 {
         Person item = repository.findById(id)
         .orElseThrow(() -> new ResourceNotFoundException("No record found!"));
 
-        logger.info("Get one person! >> " + item.getFirstName());
+        logger.info("Get one person! >> " + item.getFullName());
 
         return PersonMapper.parseDTO(item);
 

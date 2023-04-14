@@ -3,6 +3,8 @@ package br.com.bartie.api.v2.view;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.springframework.hateoas.RepresentationModel;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -14,10 +16,10 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper=true)
 @ToString
 @JsonPropertyOrder({"id", "first_name", "last_name", "birthday", "address"})
-public class PersonDTO implements Serializable {
+public class PersonDTO extends RepresentationModel<PersonDTO> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 

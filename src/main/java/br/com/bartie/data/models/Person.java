@@ -7,7 +7,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -37,5 +36,7 @@ public class Person implements Serializable {
     
     @Column(nullable = false, length = 10)
     private String gender;
+
+    public String getFullName() { return firstName + " " + lastName; };
 
 }
