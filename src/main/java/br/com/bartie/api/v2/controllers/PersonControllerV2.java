@@ -3,10 +3,11 @@ package br.com.bartie.api.v2.controllers;
 import br.com.bartie.api.v2.services.PersonServicesV2;
 import br.com.bartie.api.v2.view.PersonDTO;
 
+import br.com.bartie.app.serialization.MediaType;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,21 +26,21 @@ public class PersonControllerV2 {
     private PersonServicesV2 service;
 
     @GetMapping(value = "/{id}", 
-        produces = { MediaType.APPLICATION_JSON_VALUE , MediaType.APPLICATION_XML_VALUE })
+        produces = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML })
     public PersonDTO get(@PathVariable(value = "id") Long id) {
         return service.get(id);
     }
 
     @PostMapping(
-        consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, 
-        produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+        consumes = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML }, 
+        produces = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML })
     public PersonDTO add(@RequestBody PersonDTO person) {
         return service.create(person);
     }
 
     @PutMapping(
-        consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, 
-        produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+        consumes = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML }, 
+        produces = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML })
     public PersonDTO save(@RequestBody PersonDTO person) {
         return service.update(person);
     }
@@ -51,7 +52,7 @@ public class PersonControllerV2 {
     }
 
     @GetMapping(
-        produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+        produces = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML })
     public List<PersonDTO> getAll() {
         return service.getAll();
     }
