@@ -1,11 +1,11 @@
-package br.com.bartie.app.core;
+package br.com.bartie.app.serialization;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.modelmapper.ModelMapper;
 
-public class Mapper {
+public class DataMapper {
 
 	private static ModelMapper model = new ModelMapper();    
 	

@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -30,7 +29,6 @@ public class PersonDTO implements Serializable {
 	@JsonProperty("last_name")
 	private String lastName;
 
-	@JsonIgnore()
 	private String gender;
 
 	private String address;
