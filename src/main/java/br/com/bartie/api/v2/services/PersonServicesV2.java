@@ -6,15 +6,20 @@ import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import org.springframework.hateoas.Link;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
+
 import br.com.bartie.data.repositories.PersonRepository;
+import br.com.bartie.api.v2.controllers.PersonControllerV2;
 import br.com.bartie.api.v2.mapper.PersonMapper;
 import br.com.bartie.api.v2.view.PersonDTO;
 import br.com.bartie.data.models.Person;
 
 import br.com.bartie.app.exceptions.ResourceNotFoundException;
+import br.com.bartie.app.serialization.RestFullApi;
 
 @Service
-public class PersonServicesV2 {
+public class PersonServicesV2 extends RestFullApi {
 
     private Logger logger = Logger.getLogger(PersonServicesV2.class.getName());
 
@@ -25,7 +30,11 @@ public class PersonServicesV2 {
 
         logger.info("Get all persons!");
 
-        return PersonMapper.parseDTO(repository.findAll());
+        var list = PersonMapper.parseDTO(repository.findAll());
+
+        list.stream().forEach(item -> addLink(item));
+   
+        return list;
 
     }
 
@@ -36,7 +45,7 @@ public class PersonServicesV2 {
 
         logger.info("Get one person! >> " + item.getFullName());
 
-        return PersonMapper.parseDTO(item);
+        return addLink(PersonMapper.parseDTO(item));
 
     }
 
@@ -46,7 +55,7 @@ public class PersonServicesV2 {
 
         logger.info("Create one person! >> " + item.getFullName());
 
-        return PersonMapper.parseDTO(repository.save(item));
+        return addLink(PersonMapper.parseDTO(repository.save(item)));
 
     }
 
@@ -56,7 +65,7 @@ public class PersonServicesV2 {
 
         logger.info("Update one person! >> " + item.getFullName());
 
-        return PersonMapper.parseDTO(repository.save(item));
+        return addLink(PersonMapper.parseDTO(repository.save(item)));
 
     }
 
@@ -79,6 +88,12 @@ public class PersonServicesV2 {
             delete(item);
         }
 
+    }
+
+    private PersonDTO addLink(PersonDTO item) { 
+        Link link = getLink(WebMvcLinkBuilder.methodOn(PersonControllerV2.class).get(item.getId())); 
+
+        return item.add(link);
     }
     
 }

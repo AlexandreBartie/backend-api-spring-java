@@ -1,4 +1,4 @@
-package br.com.bartie.unitTest.Mapper;
+package br.com.bartie.unitTest.mapper;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -7,25 +7,25 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import br.com.bartie.api.v1.mapper.PersonMapper;
-import br.com.bartie.api.v1.view.PersonDTO;
+import br.com.bartie.api.v2.mapper.PersonMapper;
+import br.com.bartie.api.v2.view.PersonDTO;
 import br.com.bartie.data.models.Person;
 import br.com.bartie.unitTest.PersonMock;
 
 public class MapperTest {
 
-    PersonMock input;
+    PersonMock mock;
     PersonMapper mapper = new PersonMapper();
 
     @BeforeEach
     public void setUp() {
-        input = new PersonMock();
+        mock = new PersonMock();
     }
 
     @Test
     public void parseEntityToVOTest() {
-        PersonDTO output = PersonMapper.parseDTO(input.mockEntity());
-        assertEquals(Long.valueOf(0L), output.getId());
+        PersonDTO output = PersonMapper.parseDTO(mock.get(0L));
+        assertEquals(Long.valueOf(0), output.getId());
         assertEquals("First Name Test0", output.getFirstName());
         assertEquals("Last Name Test0", output.getLastName());
         assertEquals("Addres Test0", output.getAddress());
@@ -34,7 +34,7 @@ public class MapperTest {
 
     @Test
     public void parseEntityListToVOListTest() {
-        List<PersonDTO> outputList = PersonMapper.parseDTO(input.mockEntityList());
+        List<PersonDTO> outputList = PersonMapper.parseDTO(mock.getList());
         PersonDTO outputZero = outputList.get(0);
 
         assertEquals(Long.valueOf(0L), outputZero.getId());
@@ -62,8 +62,8 @@ public class MapperTest {
 
     @Test
     public void parseVOToEntityTest() {
-        Person output = PersonMapper.parse(input.mockDTO());
-        assertEquals(Long.valueOf(0L), output.getId());
+        Person output = PersonMapper.parse(mock.getDTO(0L));
+        assertEquals(Long.valueOf(0), output.getId());
         assertEquals("First Name Test0", output.getFirstName());
         assertEquals("Last Name Test0", output.getLastName());
         assertEquals("Addres Test0", output.getAddress());
@@ -72,7 +72,7 @@ public class MapperTest {
 
     @Test
     public void parserVOListToEntityListTest() {
-        List<Person> outputList = PersonMapper.parse(input.mockDTOList());
+        List<Person> outputList = PersonMapper.parse(mock.getListDTO());
         Person outputZero = outputList.get(0);
 
         assertEquals(Long.valueOf(0L), outputZero.getId());

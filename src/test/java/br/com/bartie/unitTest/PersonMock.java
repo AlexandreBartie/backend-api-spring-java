@@ -3,37 +3,38 @@ package br.com.bartie.unitTest;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.bartie.api.v1.view.PersonDTO;
 import br.com.bartie.data.models.Person;
+import br.com.bartie.api.v2.view.PersonDTO;
+
 
 public class PersonMock {
 
 
-    public Person mockEntity() {
-        return mockEntity(0);
+    public Person get(Long id) {
+        return mockEntity(id);
     }
     
-    public PersonDTO mockDTO() {
-        return mockDTO(0);
+    public PersonDTO getDTO(Long id) {
+        return mockDTO(id);
     }
     
-    public List<Person> mockEntityList() {
+    public List<Person> getList() {
         List<Person> persons = new ArrayList<Person>();
-        for (int i = 0; i < 14; i++) {
-            persons.add(mockEntity(i));
+        for (Long id = 0L; id < 14; id++) {
+            persons.add(mockEntity(id));
         }
         return persons;
     }
 
-    public List<PersonDTO> mockDTOList() {
+    public List<PersonDTO> getListDTO() {
         List<PersonDTO> persons = new ArrayList<>();
-        for (int i = 0; i < 14; i++) {
-            persons.add(mockDTO(i));
+        for (Long id = 0L; id < 14; id++) {
+            persons.add(mockDTO(id));
         }
         return persons;
     }
     
-    public Person mockEntity(Integer number) {
+    public Person mockEntity(Long number) {
         Person person = new Person();
         person.setId(number.longValue());
         person.setFirstName("First Name Test" + number);
@@ -43,7 +44,7 @@ public class PersonMock {
         return person;
     }
 
-    public PersonDTO mockDTO(Integer number) {
+    public PersonDTO mockDTO(Long number) {
         PersonDTO person = new PersonDTO();
         person.setId(number.longValue());
         person.setFirstName("First Name Test" + number);
