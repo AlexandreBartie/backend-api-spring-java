@@ -6,11 +6,12 @@ import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.bartie.data.repositories.PersonRepository;
 import br.com.bartie.api.v2.mapper.PersonMapper;
 import br.com.bartie.api.v2.view.PersonDTO;
-import br.com.bartie.app.exceptions.ResourceNotFoundException;
 import br.com.bartie.data.models.Person;
-import br.com.bartie.data.repositories.PersonRepository;
+
+import br.com.bartie.app.exceptions.ResourceNotFoundException;
 
 @Service
 public class PersonServicesV2 {
@@ -43,7 +44,7 @@ public class PersonServicesV2 {
 
         Person item = PersonMapper.parse(person);
 
-        logger.info("Create one person! >> " + item.getFirstName());
+        logger.info("Create one person! >> " + item.getFullName());
 
         return PersonMapper.parseDTO(repository.save(item));
 
@@ -53,7 +54,7 @@ public class PersonServicesV2 {
 
         Person item = PersonMapper.parse(person);
 
-        logger.info("Update one person! >> " + item.getFirstName());
+        logger.info("Update one person! >> " + item.getFullName());
 
         return PersonMapper.parseDTO(repository.save(item));
 
@@ -63,7 +64,7 @@ public class PersonServicesV2 {
 
         Person item = PersonMapper.parse(person);
 
-        logger.info("Update one person! >> " + item.getFirstName());
+        logger.info("Update one person! >> " + item.getFullName());
 
         repository.delete(item);
 
