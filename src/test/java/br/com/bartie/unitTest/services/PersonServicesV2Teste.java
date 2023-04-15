@@ -59,12 +59,11 @@ public class PersonServicesV2Teste {
         assertEquals("Addres Test0", output.getAddress());
         assertEquals("Male", output.getGender());
 
-        System.out.println(output.toString());
+        String link_expect = "</person/v2/0>;rel=\"self\"";
 
-        assertTrue(output.toString().contains("links: [</person>]"));
+        String link_result = output.getLinks().toString();
 
-
-        // assertTrue(output.toString().contains("linksff") );
+        assertEquals(link_expect, link_result);
 
     }
     

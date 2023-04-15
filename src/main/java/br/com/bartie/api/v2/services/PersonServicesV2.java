@@ -1,9 +1,8 @@
 package br.com.bartie.api.v2.services;
 
-import java.util.List;
 import java.util.logging.Logger;
+import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import org.springframework.hateoas.Link;
@@ -16,15 +15,15 @@ import br.com.bartie.api.v2.view.PersonDTO;
 import br.com.bartie.data.models.Person;
 
 import br.com.bartie.app.exceptions.ResourceNotFoundException;
-import br.com.bartie.app.serialization.RestFullApi;
+import br.com.bartie.app.serialization.ModelServices;
+
 
 @Service
-public class PersonServicesV2 extends RestFullApi {
+public class PersonServicesV2 extends ModelServices<PersonRepository> {
 
+    
     private Logger logger = Logger.getLogger(PersonServicesV2.class.getName());
 
-    @Autowired   
-    private PersonRepository repository;
     
     public List<PersonDTO> getAll() {
 
@@ -90,10 +89,10 @@ public class PersonServicesV2 extends RestFullApi {
 
     }
 
-    private PersonDTO addLink(PersonDTO item) { 
+        private PersonDTO addLink(PersonDTO item) { 
         Link link = getLink(WebMvcLinkBuilder.methodOn(PersonControllerV2.class).get(item.getId())); 
 
         return item.add(link);
     }
-    
+   
 }
