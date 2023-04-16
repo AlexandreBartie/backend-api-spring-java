@@ -13,7 +13,7 @@ import br.com.bartie.api.v2.controllers.PersonControllerV2;
 import br.com.bartie.api.v2.mapper.PersonMapper;
 import br.com.bartie.api.v2.view.PersonDTO;
 import br.com.bartie.data.models.Person;
-
+import br.com.bartie.app.exceptions.RequiredObjectIsNullException;
 import br.com.bartie.app.exceptions.ResourceNotFoundException;
 import br.com.bartie.app.serialization.ModelServices;
 
@@ -50,6 +50,8 @@ public class PersonServicesV2 extends ModelServices<PersonRepository> {
 
     public PersonDTO create(Person person) {
 
+        if (person == null) throw new RequiredObjectIsNullException();
+
         logger.info("Create one person! >> " + person.getFullName());
 
         return addLink(PersonMapper.parseDTO(repository.save(person)));
@@ -62,11 +64,13 @@ public class PersonServicesV2 extends ModelServices<PersonRepository> {
     }
 
     public PersonDTO update(PersonDTO person) {
-
+        
         return update(PersonMapper.parse(person));
     }
 
     public PersonDTO update(Person person) {
+        
+        if (person == null) throw new RequiredObjectIsNullException();
 
         logger.info("Update one person! >> " + person.getFullName());
 

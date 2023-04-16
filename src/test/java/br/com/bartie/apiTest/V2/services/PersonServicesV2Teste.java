@@ -18,6 +18,7 @@ import org.mockito.MockitoAnnotations;
 
 import br.com.bartie.api.v2.view.PersonDTO;
 import br.com.bartie.apiTest.V2.mock.PersonMock;
+import br.com.bartie.app.exceptions.RequiredObjectIsNullException;
 import br.com.bartie.api.v2.services.PersonServicesV2;
 import br.com.bartie.data.repositories.PersonRepository;
 import br.com.bartie.data.models.Person;
@@ -112,6 +113,45 @@ public class PersonServicesV2Teste {
 
     }
 
+    @Test
+    public void CreatePersonIsNull() {
+
+        // Arrange
+
+        Person input = null;
+
+        // Act
+
+        Exception output = 
+            assertThrows(RequiredObjectIsNullException.class, () -> 
+                { service.create(input); } );
+
+        // Assert
+
+        checkIsNullException(output);
+
+    }
+
+    @Test
+    public void UpdatePersoIsNull() {
+
+        // Arrange
+
+        Person input = null;
+
+        // Act
+
+        Exception output = 
+            assertThrows(RequiredObjectIsNullException.class, () -> 
+                { service.update(input); } );
+
+        // Assert
+
+        checkIsNullException(output);
+
+
+    }
+
     private void checkAsserts(Long id, PersonDTO output)
     {
 
@@ -124,6 +164,13 @@ public class PersonServicesV2Teste {
         assertEquals(String.format("Addres Test%s", id), output.getAddress());
         assertEquals("Male", output.getGender());
         assertEquals(String.format("</person/v2/%s>;rel=\"self\"", id), output.getApiLinks());
+
+    }
+
+    private void checkIsNullException(Exception output)
+    {
+
+        assertEquals("it is not allowed to persist a null object!", output.getMessage());    
 
     }
    
