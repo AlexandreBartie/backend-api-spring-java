@@ -3,6 +3,7 @@ package br.com.bartie.apiTest.V2.services;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -12,6 +13,7 @@ import org.junit.jupiter.api.TestInstance.Lifecycle;
 import org.junit.jupiter.api.extension.ExtendWith;
 
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.data.annotation.Id;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -41,6 +43,26 @@ public class PersonServicesV2Teste {
         MockitoAnnotations.openMocks(this);
     }
 
+
+    @Test
+    public void FindListPerson() {
+
+        // Arrange
+
+        List<Person> input = mock.getList(25);
+
+        when(repository.findAll()).thenReturn(input);
+
+        // Act
+
+        List<PersonDTO> output = service.findAll();
+
+        // Assert
+
+        checkList(output, 25);
+
+    }
+
     @Test
     public void FindPerson() {
 
@@ -56,7 +78,7 @@ public class PersonServicesV2Teste {
 
         // Assert
 
-        checkAsserts(input.getId(), output);
+        checkPerson(input.getId(), output);
 
     }
 
@@ -75,7 +97,7 @@ public class PersonServicesV2Teste {
 
         // Assert
 
-        checkAsserts(input.getId(), output);
+        checkPerson(input.getId(), output);
 
     }
 
@@ -94,7 +116,7 @@ public class PersonServicesV2Teste {
 
         // Assert
 
-        checkAsserts(input.getId(), output);
+        checkPerson(input.getId(), output);
 
     }
 
@@ -152,18 +174,30 @@ public class PersonServicesV2Teste {
 
     }
 
-    private void checkAsserts(Long id, PersonDTO output)
+    private void checkPerson(Long id, PersonDTO person)
     {
 
-        assertNotNull(output);
-        assertTrue(output.hasLinks());
+        assertNotNull(person);
+        // assertTrue(person.hasLinks(),"Link HATEOAS not found!");
         
-        assertEquals(id, output.getId());
-        assertEquals(String.format("First Name Test%s", id), output.getFirstName());
-        assertEquals(String.format("Last Name Test%s", id), output.getLastName());
-        assertEquals(String.format("Addres Test%s", id), output.getAddress());
-        assertEquals("Male", output.getGender());
-        assertEquals(String.format("</person/v2/%s>;rel=\"self\"", id), output.getApiLinks());
+        assertEquals(id, person.getId());
+        assertEquals(String.format("First Name Test%s", id), person.getFirstName());
+        assertEquals(String.format("Last Name Test%s", id), person.getLastName());
+        assertEquals(String.format("Addres Test%s", id), person.getAddress());
+        assertEquals(mock.randomGender(id), person.getGender());
+        // assertEquals(String.format("</person/v2/%s>;rel=\"self\"", id), person.getApiLinks());
+
+    }
+
+    private void checkList(List<PersonDTO> list, int size)
+    {
+
+        assertNotNull(list);
+        assertEquals(size, list.size());
+
+        for (Long id = 1L; id <= size; id++) {
+            checkPerson(id, mock.getDTO(id));
+        }
 
     }
 

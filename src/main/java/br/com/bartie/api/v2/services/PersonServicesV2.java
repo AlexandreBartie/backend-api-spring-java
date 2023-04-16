@@ -25,7 +25,7 @@ public class PersonServicesV2 extends ModelServices<PersonRepository> {
     private Logger logger = Logger.getLogger(PersonServicesV2.class.getName());
 
     
-    public List<PersonDTO> getAll() {
+    public List<PersonDTO> findAll() {
 
         logger.info("Get all persons!");
 
@@ -100,7 +100,7 @@ public class PersonServicesV2 extends ModelServices<PersonRepository> {
     }
 
         private PersonDTO addLink(PersonDTO item) { 
-        Link link = getLink(WebMvcLinkBuilder.methodOn(PersonControllerV2.class).get(item.getId())); 
+        Link link = getLink(WebMvcLinkBuilder.methodOn(PersonControllerV2.class).find(item.getId())); 
 
         return item.add(link);
     }

@@ -29,21 +29,21 @@ public class PersonControllerV2 {
 
     @GetMapping(value = "/{id}", 
         produces = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML })
-    public PersonDTO get(@PathVariable(value = "id") Long id) {
+    public PersonDTO find(@PathVariable(value = "id") Long id) {
         return service.find(id);
     }
 
     @PostMapping(
         consumes = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML }, 
         produces = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML })
-    public PersonDTO add(@RequestBody PersonDTO person) {
+    public PersonDTO create(@RequestBody PersonDTO person) {
         return service.create(person);
     }
 
     @PutMapping(
         consumes = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML }, 
         produces = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML })
-    public PersonDTO save(@RequestBody PersonDTO person) {
+    public PersonDTO update(@RequestBody PersonDTO person) {
         return service.update(person);
     }
 
@@ -55,9 +55,9 @@ public class PersonControllerV2 {
 
     @GetMapping(
         produces = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML })
-    public List<PersonDTO> getAll() {
+    public List<PersonDTO> findAll() {
   
-        return service.getAll();
+        return service.findAll();
     }
 
 }
