@@ -1,4 +1,4 @@
-package br.com.bartie.unitTest.mapper;
+package br.com.bartie.apiTest.V2.mapper;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -9,8 +9,8 @@ import org.junit.jupiter.api.Test;
 
 import br.com.bartie.api.v2.mapper.PersonMapper;
 import br.com.bartie.api.v2.view.PersonDTO;
+import br.com.bartie.apiTest.V2.mock.PersonMock;
 import br.com.bartie.data.models.Person;
-import br.com.bartie.unitTest.PersonMock;
 
 public class MapperTest {
 

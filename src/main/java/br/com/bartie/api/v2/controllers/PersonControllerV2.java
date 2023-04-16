@@ -30,7 +30,7 @@ public class PersonControllerV2 {
     @GetMapping(value = "/{id}", 
         produces = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML })
     public PersonDTO get(@PathVariable(value = "id") Long id) {
-        return service.get(id);
+        return service.find(id);
     }
 
     @PostMapping(

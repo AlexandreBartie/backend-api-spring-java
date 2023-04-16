@@ -37,7 +37,7 @@ public class PersonServicesV2 extends ModelServices<PersonRepository> {
 
     }
 
-    public PersonDTO get(Long id) {
+    public PersonDTO find(Long id) {
         
         Person item = repository.findById(id)
         .orElseThrow(() -> new ResourceNotFoundException("No record found!"));
@@ -48,23 +48,29 @@ public class PersonServicesV2 extends ModelServices<PersonRepository> {
 
     }
 
+    public PersonDTO create(Person person) {
+
+        logger.info("Create one person! >> " + person.getFullName());
+
+        return addLink(PersonMapper.parseDTO(repository.save(person)));
+
+    }
+
     public PersonDTO create(PersonDTO person) {
 
-        Person item = PersonMapper.parse(person);
-
-        logger.info("Create one person! >> " + item.getFullName());
-
-        return addLink(PersonMapper.parseDTO(repository.save(item)));
-
+        return create(PersonMapper.parse(person));
     }
 
     public PersonDTO update(PersonDTO person) {
 
-        Person item = PersonMapper.parse(person);
+        return update(PersonMapper.parse(person));
+    }
 
-        logger.info("Update one person! >> " + item.getFullName());
+    public PersonDTO update(Person person) {
 
-        return addLink(PersonMapper.parseDTO(repository.save(item)));
+        logger.info("Update one person! >> " + person.getFullName());
+
+        return addLink(PersonMapper.parseDTO(repository.save(person)));
 
     }
 
@@ -80,7 +86,7 @@ public class PersonServicesV2 extends ModelServices<PersonRepository> {
 
     public void delete(Long id) {
 
-        PersonDTO item = get(id);
+        PersonDTO item = find(id);
 
         if (item != null)
         {

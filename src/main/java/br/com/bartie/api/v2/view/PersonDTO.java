@@ -19,10 +19,6 @@ import lombok.ToString;
 @JsonPropertyOrder({"id", "first_name", "last_name", "birthday", "address"})
 public class PersonDTO extends ModelDTO<PersonDTO> {
 
-	private static final long serialVersionUID = 1L;
-
-	private Long id;
-
 	@JsonProperty("first_name")
 	private String firstName;
 

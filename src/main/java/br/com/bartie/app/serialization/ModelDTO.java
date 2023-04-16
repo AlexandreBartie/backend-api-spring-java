@@ -2,15 +2,23 @@ package br.com.bartie.app.serialization;
 
 import java.io.Serializable;
 
-import org.springframework.hateoas.Link;
 import org.springframework.hateoas.RepresentationModel;
-import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 
 public class ModelDTO<DTO extends RepresentationModel<? extends DTO>> extends RepresentationModel<DTO> implements Serializable {    
 
-    public Link getLink(Object method) {
+    private static final long serialVersionUID = 1L;
 
-        return WebMvcLinkBuilder.linkTo(method).withSelfRel();
-    }
+	protected Long id;
 
+    @JsonIgnore
+	public String getApiLinks() { return getLinks().toString(); } 
+	
 }
