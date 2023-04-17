@@ -13,7 +13,6 @@ import org.junit.jupiter.api.TestInstance.Lifecycle;
 import org.junit.jupiter.api.extension.ExtendWith;
 
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.data.annotation.Id;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -78,7 +77,7 @@ public class PersonServicesV2Teste {
 
         // Assert
 
-        checkPerson(input.getId(), output);
+        checkPerson(output, input.getId());
 
     }
 
@@ -97,7 +96,7 @@ public class PersonServicesV2Teste {
 
         // Assert
 
-        checkPerson(input.getId(), output);
+        checkPerson(output, input.getId());
 
     }
 
@@ -116,7 +115,7 @@ public class PersonServicesV2Teste {
 
         // Assert
 
-        checkPerson(input.getId(), output);
+        checkPerson(output, input.getId());
 
     }
 
@@ -174,18 +173,21 @@ public class PersonServicesV2Teste {
 
     }
 
-    private void checkPerson(Long id, PersonDTO person)
+    private void checkPerson(PersonDTO person)
+    { checkPerson(person, person.getId()); }
+
+    private void checkPerson(PersonDTO person, Long id)
     {
 
         assertNotNull(person);
-        // assertTrue(person.hasLinks(),"Link HATEOAS not found!");
+        assertTrue(person.hasLinks(),"Link HATEOAS not found!");
         
         assertEquals(id, person.getId());
         assertEquals(String.format("First Name Test%s", id), person.getFirstName());
         assertEquals(String.format("Last Name Test%s", id), person.getLastName());
-        assertEquals(String.format("Addres Test%s", id), person.getAddress());
+        assertEquals(String.format("Address Test%s", id), person.getAddress());
         assertEquals(mock.randomGender(id), person.getGender());
-        // assertEquals(String.format("</person/v2/%s>;rel=\"self\"", id), person.getApiLinks());
+        assertEquals(String.format("</person/v2/%s>;rel=\"self\"", id), person.getApiLinks());
 
     }
 
@@ -195,9 +197,7 @@ public class PersonServicesV2Teste {
         assertNotNull(list);
         assertEquals(size, list.size());
 
-        for (Long id = 1L; id <= size; id++) {
-            checkPerson(id, mock.getDTO(id));
-        }
+        list.stream().forEach(item -> checkPerson(item));
 
     }
 

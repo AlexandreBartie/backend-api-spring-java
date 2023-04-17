@@ -1,6 +1,5 @@
 package br.com.bartie.api.v2.services;
 
-import java.util.logging.Logger;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -20,19 +19,19 @@ import br.com.bartie.app.serialization.ModelServices;
 
 @Service
 public class PersonServicesV2 extends ModelServices<PersonRepository> {
+ 
+    public PersonServicesV2() {
+        super(PersonServicesV2.class.getName());
+    }
 
-    
-    private Logger logger = Logger.getLogger(PersonServicesV2.class.getName());
-
-    
     public List<PersonDTO> findAll() {
 
-        logger.info("Get all persons!");
+        log("Get all persons!");
 
         var list = PersonMapper.parseDTO(repository.findAll());
 
         list.stream().forEach(item -> addLink(item));
-   
+  
         return list;
 
     }
@@ -42,7 +41,7 @@ public class PersonServicesV2 extends ModelServices<PersonRepository> {
         Person item = repository.findById(id)
         .orElseThrow(() -> new ResourceNotFoundException("No record found!"));
 
-        logger.info("Get one person! >> " + item.getFullName());
+        log("Get one person! >> " + item.getFullName());
 
         return addLink(PersonMapper.parseDTO(item));
 
@@ -52,7 +51,7 @@ public class PersonServicesV2 extends ModelServices<PersonRepository> {
 
         if (person == null) throw new RequiredObjectIsNullException();
 
-        logger.info("Create one person! >> " + person.getFullName());
+        log("Create one person! >> " + person.getFullName());
 
         return addLink(PersonMapper.parseDTO(repository.save(person)));
 
@@ -72,7 +71,7 @@ public class PersonServicesV2 extends ModelServices<PersonRepository> {
         
         if (person == null) throw new RequiredObjectIsNullException();
 
-        logger.info("Update one person! >> " + person.getFullName());
+        log("Update one person! >> " + person.getFullName());
 
         return addLink(PersonMapper.parseDTO(repository.save(person)));
 
@@ -82,7 +81,7 @@ public class PersonServicesV2 extends ModelServices<PersonRepository> {
 
         Person item = PersonMapper.parse(person);
 
-        logger.info("Update one person! >> " + item.getFullName());
+        log("Update one person! >> " + item.getFullName());
 
         repository.delete(item);
 
@@ -98,8 +97,9 @@ public class PersonServicesV2 extends ModelServices<PersonRepository> {
         }
 
     }
-
-        private PersonDTO addLink(PersonDTO item) { 
+        
+    private PersonDTO addLink(PersonDTO item) { 
+            
         Link link = getLink(WebMvcLinkBuilder.methodOn(PersonControllerV2.class).find(item.getId())); 
 
         return item.add(link);

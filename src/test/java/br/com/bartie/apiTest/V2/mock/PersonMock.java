@@ -22,15 +22,19 @@ public class PersonMock {
 
     public List<Person> getList(int size) {
         List<Person> persons = new ArrayList<Person>();
-        for (Long id = 0L; id < size; id++) {
+        for (Long id = 1L; id <= size; id++) {
             persons.add(mockEntity(id));
         }
         return persons;
     }
 
     public List<PersonDTO> getListDTO() {
+        return getListDTO(15);
+    }
+
+    public List<PersonDTO> getListDTO(int size) {
         List<PersonDTO> persons = new ArrayList<>();
-        for (Long id = 1L; id <= 14; id++) {
+        for (Long id = 1L; id <= size; id++) {
             persons.add(mockDTO(id));
         }
         return persons;
@@ -41,7 +45,7 @@ public class PersonMock {
         person.setId(number.longValue());
         person.setFirstName("First Name Test" + number);
         person.setLastName("Last Name Test" + number);
-        person.setAddress("Addres Test" + number);
+        person.setAddress("Address Test" + number);
         person.setGender(randomGender(number));
         return person;
     }
