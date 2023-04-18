@@ -4,6 +4,7 @@ import br.com.bartie.api.v2.services.PersonServicesV2;
 import br.com.bartie.api.v2.view.PersonDTO;
 
 import br.com.bartie.app.serialization.MediaType;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 import java.util.List;
 
@@ -17,15 +18,23 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/person/v2")
+@Tag(name = "People", description = "Endpoints of people information")
 public class PersonControllerV2 {
 
     @Autowired
     private PersonServicesV2 service;
+
+    @GetMapping(
+        produces = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML })
+    public List<PersonDTO> findAll() {
+  
+        return service.findAll();
+    }
 
     @GetMapping(value = "/{id}", 
         produces = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML })
@@ -51,13 +60,6 @@ public class PersonControllerV2 {
     public ResponseEntity<?> delete(@PathVariable(value = "id") Long id) {
         service.delete(id);
         return ResponseEntity.noContent().build();
-    }
-
-    @GetMapping(
-        produces = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML })
-    public List<PersonDTO> findAll() {
-  
-        return service.findAll();
     }
 
 }
