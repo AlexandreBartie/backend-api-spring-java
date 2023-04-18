@@ -20,5 +20,5 @@ public class ModelDTO<DTO extends RepresentationModel<? extends DTO>> extends Re
 
     @JsonIgnore
 	public String getApiLinks() { return getLinks().toString(); } 
-	
+
 }
