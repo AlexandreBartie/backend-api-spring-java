@@ -17,10 +17,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import br.com.bartie.api.v2.view.PersonDTO;
+import br.com.bartie.api.v1.services.PersonServices;
+import br.com.bartie.api.v1.view.PersonDTO;
 import br.com.bartie.apiTest.V2.mock.PersonMock;
 import br.com.bartie.app.exceptions.RequiredObjectIsNullException;
-import br.com.bartie.api.v2.services.PersonServicesV2;
 import br.com.bartie.data.model.Person;
 import br.com.bartie.data.repository.PersonRepository;
 
@@ -31,7 +31,7 @@ public class PersonServicesV2Teste {
     PersonMock mock;
 
     @InjectMocks
-    private PersonServicesV2 service;
+    private PersonServices service;
 
     @Mock
     PersonRepository repository;

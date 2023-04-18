@@ -3,8 +3,8 @@ package br.com.bartie.apiTest.V2.mock;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.bartie.api.v1.view.PersonDTO;
 import br.com.bartie.data.model.Person;
-import br.com.bartie.api.v2.view.PersonDTO;
 
 public class PersonMock {
 

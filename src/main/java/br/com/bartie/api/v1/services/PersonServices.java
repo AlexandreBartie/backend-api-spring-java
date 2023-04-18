@@ -1,4 +1,4 @@
-package br.com.bartie.api.v2.services;
+package br.com.bartie.api.v1.services;
 
 import java.util.List;
 
@@ -7,21 +7,21 @@ import org.springframework.stereotype.Service;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 
-import br.com.bartie.api.v2.controllers.PersonControllerV2;
-import br.com.bartie.api.v2.mapper.PersonMapper;
-import br.com.bartie.api.v2.view.PersonDTO;
 import br.com.bartie.data.model.Person;
 import br.com.bartie.data.repository.PersonRepository;
+import br.com.bartie.api.v1.controllers.PersonController;
+import br.com.bartie.api.v1.mapper.PersonMapper;
+import br.com.bartie.api.v1.view.PersonDTO;
 import br.com.bartie.app.core.ModelServices;
 import br.com.bartie.app.exceptions.RequiredObjectIsNullException;
 import br.com.bartie.app.exceptions.ResourceNotFoundException;
 
 
 @Service
-public class PersonServicesV2 extends ModelServices<PersonRepository> {
+public class PersonServices extends ModelServices<PersonRepository> {
  
-    public PersonServicesV2() {
-        super(PersonServicesV2.class.getName());
+    public PersonServices() {
+        super(PersonServices.class.getName());
     }
 
     public List<PersonDTO> findAll() {
@@ -100,7 +100,7 @@ public class PersonServicesV2 extends ModelServices<PersonRepository> {
         
     private PersonDTO addLink(PersonDTO item) { 
             
-        Link link = getLink(WebMvcLinkBuilder.methodOn(PersonControllerV2.class).find(item.getId())); 
+        Link link = getLink(WebMvcLinkBuilder.methodOn(PersonController.class).find(item.getId())); 
 
         return item.add(link);
     }

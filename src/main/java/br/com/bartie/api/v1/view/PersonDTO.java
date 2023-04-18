@@ -1,7 +1,12 @@
 package br.com.bartie.api.v1.view;
 
-import java.io.Serializable;
+import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+import br.com.bartie.app.core.ModelDTO;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -9,16 +14,22 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper=true)
 @ToString
-public class PersonDTO implements Serializable {
+@JsonPropertyOrder({"id", "first_name", "last_name", "birthday", "address"})
+public class PersonDTO extends ModelDTO<PersonDTO> {
 
-	private static final long serialVersionUID = 1L;
-
-	private Long id;
+	@JsonProperty("first_name")
 	private String firstName;
+
+	@JsonProperty("last_name")
 	private String lastName;
-	private String address;
+
 	private String gender;
+
+	private String address;
+
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+	private Date birthday = new Date();
 
 }

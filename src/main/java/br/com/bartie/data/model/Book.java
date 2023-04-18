@@ -9,6 +9,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -28,15 +30,16 @@ public class Book extends ModelEntity {
     private Long id;
 
     @Column(nullable = false)
-    private String author;
+    private String title;
 
     @Column(nullable = false)
-    private Date launchDate;
+    private String author;
 
-    @Column(nullable = false, length = 100)
-    private String address;
-    
-    @Column(nullable = false, length = 10)
-    private String gender;
+    @Column(name = "launch_date", nullable = false)
+    @Temporal(TemporalType.DATE)
+    private Date launch;
+
+    @Column(nullable = false)
+    private Double price;
 
 }
