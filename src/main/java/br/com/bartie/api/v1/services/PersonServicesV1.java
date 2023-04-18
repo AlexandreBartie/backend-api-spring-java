@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 import br.com.bartie.api.v1.mapper.PersonMapper;
 import br.com.bartie.api.v1.view.PersonDTO;
 import br.com.bartie.app.exceptions.ResourceNotFoundException;
-import br.com.bartie.data.models.Person;
-import br.com.bartie.data.repositories.PersonRepository;
+import br.com.bartie.data.model.Person;
+import br.com.bartie.data.repository.PersonRepository;
 @Service
 public class PersonServicesV1 {
 

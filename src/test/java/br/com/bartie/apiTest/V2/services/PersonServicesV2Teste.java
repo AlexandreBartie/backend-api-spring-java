@@ -21,8 +21,8 @@ import br.com.bartie.api.v2.view.PersonDTO;
 import br.com.bartie.apiTest.V2.mock.PersonMock;
 import br.com.bartie.app.exceptions.RequiredObjectIsNullException;
 import br.com.bartie.api.v2.services.PersonServicesV2;
-import br.com.bartie.data.repositories.PersonRepository;
-import br.com.bartie.data.models.Person;
+import br.com.bartie.data.model.Person;
+import br.com.bartie.data.repository.PersonRepository;
 
 @TestInstance(Lifecycle.PER_CLASS)
 @ExtendWith(MockitoExtension.class)

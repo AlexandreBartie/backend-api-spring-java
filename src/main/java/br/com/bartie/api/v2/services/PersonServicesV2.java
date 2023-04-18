@@ -7,14 +7,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 
-import br.com.bartie.data.repositories.PersonRepository;
 import br.com.bartie.api.v2.controllers.PersonControllerV2;
 import br.com.bartie.api.v2.mapper.PersonMapper;
 import br.com.bartie.api.v2.view.PersonDTO;
-import br.com.bartie.data.models.Person;
+import br.com.bartie.data.model.Person;
+import br.com.bartie.data.repository.PersonRepository;
+import br.com.bartie.app.core.ModelServices;
 import br.com.bartie.app.exceptions.RequiredObjectIsNullException;
 import br.com.bartie.app.exceptions.ResourceNotFoundException;
-import br.com.bartie.app.serialization.ModelServices;
 
 
 @Service

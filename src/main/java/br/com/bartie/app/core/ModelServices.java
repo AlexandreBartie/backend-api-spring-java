@@ -1,4 +1,4 @@
-package br.com.bartie.app.serialization;
+package br.com.bartie.app.core;
 
 import java.util.logging.Logger;
 

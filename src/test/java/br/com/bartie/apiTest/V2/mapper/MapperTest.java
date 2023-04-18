@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import br.com.bartie.api.v2.mapper.PersonMapper;
 import br.com.bartie.api.v2.view.PersonDTO;
 import br.com.bartie.apiTest.V2.mock.PersonMock;
-import br.com.bartie.data.models.Person;
+import br.com.bartie.data.model.Person;
 
 public class MapperTest {
 

@@ -2,7 +2,6 @@ package br.com.bartie.api.v2.controllers;
 
 import br.com.bartie.api.v2.services.PersonServicesV2;
 import br.com.bartie.api.v2.view.PersonDTO;
-
 import br.com.bartie.app.serialization.MediaType;
 
 import java.util.List;

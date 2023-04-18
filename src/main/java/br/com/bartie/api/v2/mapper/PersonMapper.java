@@ -2,7 +2,7 @@ package br.com.bartie.api.v2.mapper;
 
 import br.com.bartie.api.v2.view.PersonDTO;
 import br.com.bartie.app.serialization.DataMapper;
-import br.com.bartie.data.models.Person;
+import br.com.bartie.data.model.Person;
 
 import java.util.List;
 
