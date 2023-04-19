@@ -1,44 +1,11 @@
 package br.com.bartie.apiTest.V1.mock;
 
-import java.util.ArrayList;
-import java.util.List;
+import br.com.bartie.app.core.ModelMock;
 
 import br.com.bartie.api.v1.view.PersonDTO;
 import br.com.bartie.data.model.Person;
 
-public class PersonMock {
-
-    public Person get(Long id) {
-        return mockEntity(id);
-    }
-
-    public PersonDTO getDTO(Long id) {
-        return mockDTO(id);
-    }
-
-    public List<Person> getList() {
-        return getList(15);
-    }
-
-    public List<Person> getList(int size) {
-        List<Person> persons = new ArrayList<Person>();
-        for (Long id = 1L; id <= size; id++) {
-            persons.add(mockEntity(id));
-        }
-        return persons;
-    }
-
-    public List<PersonDTO> getListDTO() {
-        return getListDTO(15);
-    }
-
-    public List<PersonDTO> getListDTO(int size) {
-        List<PersonDTO> persons = new ArrayList<>();
-        for (Long id = 1L; id <= size; id++) {
-            persons.add(mockDTO(id));
-        }
-        return persons;
-    }
+public class PersonMock extends ModelMock<Person, PersonDTO> {
 
     public Person mockEntity(Long number) {
         Person person = new Person();
