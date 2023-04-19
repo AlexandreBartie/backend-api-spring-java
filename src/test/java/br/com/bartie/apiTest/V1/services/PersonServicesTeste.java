@@ -183,11 +183,11 @@ public class PersonServicesTeste {
         assertTrue(person.hasLinks(),"Link HATEOAS not found!");
         
         assertEquals(id, person.getId());
-        assertEquals(String.format("First Name Test%s", id), person.getFirstName());
-        assertEquals(String.format("Last Name Test%s", id), person.getLastName());
-        assertEquals(String.format("Address Test%s", id), person.getAddress());
+        assertEquals(String.format("FirstName#%s", id), person.getFirstName());
+        assertEquals(String.format("LastName#%s", id), person.getLastName());
+        assertEquals(String.format("Address#%s", id), person.getAddress());
         assertEquals(mock.randomGender(id), person.getGender());
-        assertEquals(String.format("</person/v2/%s>;rel=\"self\"", id), person.getApiLinks());
+        assertEquals(String.format("</person/v1/%s>;rel=\"self\"", id), person.getApiLinks());
 
     }
 

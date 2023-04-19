@@ -12,7 +12,7 @@ import br.com.bartie.api.v1.view.PersonDTO;
 import br.com.bartie.apiTest.V1.mock.PersonMock;
 import br.com.bartie.data.model.Person;
 
-public class MapperTest {
+public class PersonMapperTest {
 
     PersonMock mock;
     PersonMapper mapper = new PersonMapper();

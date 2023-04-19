@@ -10,9 +10,9 @@ public class PersonMock extends ModelMock<Person, PersonDTO> {
     public Person mockEntity(Long number) {
         Person person = new Person();
         person.setId(number.longValue());
-        person.setFirstName("First Name Test" + number);
-        person.setLastName("Last Name Test" + number);
-        person.setAddress("Address Test" + number);
+        person.setFirstName("FirstName#" + number);
+        person.setLastName("LastName#" + number);
+        person.setAddress("Address#" + number);
         person.setGender(randomGender(number));
         return person;
     }
@@ -20,9 +20,9 @@ public class PersonMock extends ModelMock<Person, PersonDTO> {
     public PersonDTO mockDTO(Long number) {
         PersonDTO person = new PersonDTO();
         person.setId(number.longValue());
-        person.setFirstName("First Name Test" + number);
-        person.setLastName("Last Name Test" + number);
-        person.setAddress("Addres Test" + number);
+        person.setFirstName("FirstName#" + number);
+        person.setLastName("LastName#" + number);
+        person.setAddress("Address#" + number);
         person.setGender(randomGender(number));
         return person;
     }
