@@ -12,21 +12,24 @@ import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
 import org.junit.jupiter.api.extension.ExtendWith;
 
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import br.com.bartie.api.v1.services.PersonServices;
 import br.com.bartie.api.v1.view.PersonDTO;
+import br.com.bartie.apiTest.V1.check.PersonAssert;
 import br.com.bartie.apiTest.V1.mock.PersonMock;
 import br.com.bartie.app.exceptions.RequiredObjectIsNullException;
 import br.com.bartie.data.model.Person;
 import br.com.bartie.data.repository.PersonRepository;
 
+// public class PersonServicesTest extends ModelApiServiceTest<PersonServices, PersonMock, PersonRepository, Person, PersonDTO>  {
+
 @TestInstance(Lifecycle.PER_CLASS)
 @ExtendWith(MockitoExtension.class)
-public class PersonServicesTeste {
+public class PersonServicesTest {
 
     PersonMock mock;
 
@@ -41,7 +44,6 @@ public class PersonServicesTeste {
         mock = new PersonMock();
         MockitoAnnotations.openMocks(this);
     }
-
 
     @Test
     public void FindListPerson() {
@@ -58,7 +60,7 @@ public class PersonServicesTeste {
 
         // Assert
 
-        checkList(output, 25);
+        PersonAssert.checkList(output, 25);
 
     }
 
@@ -77,7 +79,7 @@ public class PersonServicesTeste {
 
         // Assert
 
-        checkPerson(output, input.getId());
+        PersonAssert.checkService(output);
 
     }
 
@@ -96,7 +98,7 @@ public class PersonServicesTeste {
 
         // Assert
 
-        checkPerson(output, input.getId());
+        PersonAssert.checkService(output);
 
     }
 
@@ -115,7 +117,7 @@ public class PersonServicesTeste {
 
         // Assert
 
-        checkPerson(output, input.getId());
+        PersonAssert.checkService(output);
 
     }
 
@@ -149,7 +151,7 @@ public class PersonServicesTeste {
 
         // Assert
 
-        checkIsNullException(output);
+        PersonAssert.checkIsNullException(output);
 
     }
 
@@ -168,46 +170,10 @@ public class PersonServicesTeste {
 
         // Assert
 
-        checkIsNullException(output);
-
-
-    }
-
-    private void checkPerson(PersonDTO person)
-    { checkPerson(person, person.getId()); }
-
-    private void checkPerson(PersonDTO person, Long id)
-    {
-
-        assertNotNull(person);
-        assertTrue(person.hasLinks(),"Link HATEOAS not found!");
-        
-        assertEquals(id, person.getId());
-        assertEquals(String.format("FirstName#%s", id), person.getFirstName());
-        assertEquals(String.format("LastName#%s", id), person.getLastName());
-        assertEquals(String.format("Address#%s", id), person.getAddress());
-        assertEquals(mock.randomGender(id), person.getGender());
-        assertEquals(String.format("</person/v1/%s>;rel=\"self\"", id), person.getApiLinks());
+        PersonAssert.checkIsNullException(output);
 
     }
 
-    private void checkList(List<PersonDTO> list, int size)
-    {
-
-        assertNotNull(list);
-        assertEquals(size, list.size());
-
-        list.stream().forEach(item -> checkPerson(item));
-
-    }
-
-    private void checkIsNullException(Exception output)
-    {
-
-        assertEquals("it is not allowed to persist a null object!", output.getMessage());    
-
-    }
-   
 }
 
 

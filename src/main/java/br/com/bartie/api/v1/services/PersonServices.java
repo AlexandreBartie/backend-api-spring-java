@@ -2,8 +2,10 @@ package br.com.bartie.api.v1.services;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
+import java.util.logging.Logger;
 
+import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 
@@ -12,23 +14,33 @@ import br.com.bartie.data.repository.PersonRepository;
 import br.com.bartie.api.v1.controllers.PersonController;
 import br.com.bartie.api.v1.mapper.PersonMapper;
 import br.com.bartie.api.v1.view.PersonDTO;
-import br.com.bartie.app.core.ModelServices;
+import br.com.bartie.app.core.ModelService;
 import br.com.bartie.app.exceptions.RequiredObjectIsNullException;
 import br.com.bartie.app.exceptions.ResourceNotFoundException;
 
-
 @Service
-public class PersonServices extends ModelServices<PersonRepository> {
+public class PersonServices extends ModelService {
  
+    private Logger logger;
+
+    private PersonMapper mapper = new PersonMapper();
+
+    @Autowired
+    protected PersonRepository repository;
+
     public PersonServices() {
-        super(PersonServices.class.getName());
+        logger = Logger.getLogger(PersonServices.class.getName());
+    }
+
+    public void log(String msg) {
+        logger.info(msg);
     }
 
     public List<PersonDTO> findAll() {
 
         log("Get all persons!");
 
-        var list = PersonMapper.parseDTO(repository.findAll());
+        var list = mapper.parseDTO(repository.findAll());
 
         list.stream().forEach(item -> addLink(item));
   
@@ -43,7 +55,7 @@ public class PersonServices extends ModelServices<PersonRepository> {
 
         log("Get one person! >> " + item.getFullName());
 
-        return addLink(PersonMapper.parseDTO(item));
+        return addLink(mapper.parseDTO(item));
 
     }
 
@@ -53,18 +65,18 @@ public class PersonServices extends ModelServices<PersonRepository> {
 
         log("Create one person! >> " + person.getFullName());
 
-        return addLink(PersonMapper.parseDTO(repository.save(person)));
+        return addLink(mapper.parseDTO(repository.save(person)));
 
     }
 
     public PersonDTO create(PersonDTO person) {
 
-        return create(PersonMapper.parse(person));
+        return create(mapper.parse(person));
     }
 
     public PersonDTO update(PersonDTO person) {
         
-        return update(PersonMapper.parse(person));
+        return update(mapper.parse(person));
     }
 
     public PersonDTO update(Person person) {
@@ -73,13 +85,13 @@ public class PersonServices extends ModelServices<PersonRepository> {
 
         log("Update one person! >> " + person.getFullName());
 
-        return addLink(PersonMapper.parseDTO(repository.save(person)));
+        return addLink(mapper.parseDTO(repository.save(person)));
 
     }
 
     public void delete(PersonDTO person) {
 
-        Person item = PersonMapper.parse(person);
+        Person item = mapper.parse(person);
 
         log("Update one person! >> " + item.getFullName());
 

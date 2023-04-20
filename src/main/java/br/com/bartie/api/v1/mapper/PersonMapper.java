@@ -1,28 +1,33 @@
 package br.com.bartie.api.v1.mapper;
 
+import java.util.List;
+
 import br.com.bartie.api.v1.view.PersonDTO;
 import br.com.bartie.app.serialization.DataMapper;
 import br.com.bartie.data.model.Person;
 
-import java.util.List;
+// import java.util.List;
 
-public class PersonMapper {
+public class PersonMapper { // extends ModelMapper<Person, PersonDTO> {}
 
-    public static Person parse(PersonDTO source) {
-        return DataMapper.parse(source, Person.class);
+    private DataMapper<Person, PersonDTO> mapper = new DataMapper<Person, PersonDTO> ();
+
+    public Person parse(PersonDTO source) {
+        return mapper.parse(source, Person.class);
     }
 
-    public static List<Person> parse(List<PersonDTO> source) {
-        return DataMapper.parse(source, Person.class);
+    public List<Person> parse(List<PersonDTO> source) {
+        return mapper.parse(source, Person.class);
 	}
 
-    public static PersonDTO parseDTO(Person source)
+    public PersonDTO parseDTO(Person source)
     {
-        return DataMapper.parse(source, PersonDTO.class);
+        return mapper.parseDTO(source, PersonDTO.class);
     }
 
-    public static List<PersonDTO> parseDTO(List<Person> source) {
-        return DataMapper.parse(source, PersonDTO.class);
+    public List<PersonDTO> parseDTO(List<Person> source) {
+        return mapper.parseDTO(source, PersonDTO.class);
 	}
 
 }
+
