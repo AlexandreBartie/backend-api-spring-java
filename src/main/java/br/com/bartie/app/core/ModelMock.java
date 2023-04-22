@@ -3,7 +3,7 @@ package br.com.bartie.app.core;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class ModelMock<T, DTO> {
+public abstract class ModelMock<T extends ModelEntity, DTO> {
       
     public T get(Long id) {
         return mockEntity(id);
