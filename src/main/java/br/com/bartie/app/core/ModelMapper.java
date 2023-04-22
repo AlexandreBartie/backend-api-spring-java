@@ -4,7 +4,7 @@ package br.com.bartie.app.core;
 
 // import br.com.bartie.app.serialization.DataMapper;
 
-public class ModelMapper<T extends ModelEntity, DTO extends ModelDTO<DTO>> {
+public class ModelMapper<T, DTO extends ModelDTO<DTO>> {
 
     // private DataMapper<T, DTO> mapper = new DataMapper<T, DTO>();
     // private DataMapper<T, DTO> mapper = new DataMapper<T, DTO>();

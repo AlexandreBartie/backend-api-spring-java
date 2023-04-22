@@ -26,7 +26,7 @@ public class PersonServices extends ModelService {
     private PersonMapper mapper = new PersonMapper();
 
     @Autowired
-    protected PersonRepository repository;
+    PersonRepository repository;
 
     public PersonServices() {
         logger = Logger.getLogger(PersonServices.class.getName());
