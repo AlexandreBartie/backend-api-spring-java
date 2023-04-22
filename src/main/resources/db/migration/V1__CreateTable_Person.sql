@@ -1,4 +1,4 @@
-CREATE TABLE `persons` (
+CREATE TABLE `person` (
   `id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `first_name` varchar(50) NOT NULL,
   `last_name` longtext NOT NULL,
