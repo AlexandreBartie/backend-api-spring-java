@@ -33,6 +33,8 @@ public class PersonServicesTest {
 
     PersonMock mock;
 
+    PersonAssert checker = new PersonAssert();
+
     @InjectMocks
     private PersonServices service;
 
@@ -60,7 +62,7 @@ public class PersonServicesTest {
 
         // Assert
 
-        PersonAssert.checkList(output, 25);
+        checker.checkList(output, 25);
 
     }
 
@@ -79,7 +81,7 @@ public class PersonServicesTest {
 
         // Assert
 
-        PersonAssert.checkService(output);
+        checker.checkService(output);
 
     }
 
@@ -98,7 +100,7 @@ public class PersonServicesTest {
 
         // Assert
 
-        PersonAssert.checkService(output);
+        checker.checkService(output);
 
     }
 
@@ -117,7 +119,7 @@ public class PersonServicesTest {
 
         // Assert
 
-        PersonAssert.checkService(output);
+        checker.checkService(output);
 
     }
 
@@ -151,7 +153,7 @@ public class PersonServicesTest {
 
         // Assert
 
-        PersonAssert.checkIsNullException(output);
+        checker.checkIsNullException(output);
 
     }
 
@@ -170,7 +172,7 @@ public class PersonServicesTest {
 
         // Assert
 
-        PersonAssert.checkIsNullException(output);
+        checker.checkIsNullException(output);
 
     }
 

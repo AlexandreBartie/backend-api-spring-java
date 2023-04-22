@@ -15,6 +15,7 @@ public class PersonMapperTest {
 
     PersonMock mock;
     PersonMapper mapper = new PersonMapper();
+    PersonAssert checker = new PersonAssert();
 
     @BeforeEach
     public void setUp() {
@@ -34,7 +35,7 @@ public class PersonMapperTest {
 
         // Assert
 
-        PersonAssert.checkDTO(output);
+        checker.checkDTO(output);
     }
 
     @Test
@@ -54,9 +55,9 @@ public class PersonMapperTest {
 
         // Assert
 
-        PersonAssert.checkDTO(outputZero);
-        PersonAssert.checkDTO(outputSeven);
-        PersonAssert.checkDTO(outputTwelve);
+        checker.checkDTO(outputZero);
+        checker.checkDTO(outputSeven);
+        checker.checkDTO(outputTwelve);
 
     }
 
@@ -73,7 +74,7 @@ public class PersonMapperTest {
 
         // Assert
 
-        PersonAssert.check(output);
+        checker.check(output);
 
     }
 
@@ -94,8 +95,8 @@ public class PersonMapperTest {
 
         // Assert
 
-        PersonAssert.check(outputZero);
-        PersonAssert.check(outputSeven);
-        PersonAssert.check(outputTwelve);
+        checker.check(outputZero);
+        checker.check(outputSeven);
+        checker.check(outputTwelve);
     }
 }
