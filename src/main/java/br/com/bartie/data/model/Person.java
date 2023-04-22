@@ -1,6 +1,6 @@
 package br.com.bartie.data.model;
 
-import br.com.bartie.app.core.ModelEntity;
+import java.io.Serializable;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -14,10 +14,12 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@EqualsAndHashCode(callSuper=true)
+@EqualsAndHashCode
 @ToString
 @Entity
-public class Person extends ModelEntity {
+public class Person implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,5 +38,5 @@ public class Person extends ModelEntity {
     private String gender;
 
     public String getFullName() { return firstName + " " + lastName; };
-
+    
 }

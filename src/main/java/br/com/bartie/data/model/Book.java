@@ -1,8 +1,8 @@
 package br.com.bartie.data.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-import br.com.bartie.app.core.ModelEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,10 +18,12 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@EqualsAndHashCode(callSuper=true)
+@EqualsAndHashCode
 @ToString
 @Entity
-public class Book extends ModelEntity {
+public class Book implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
