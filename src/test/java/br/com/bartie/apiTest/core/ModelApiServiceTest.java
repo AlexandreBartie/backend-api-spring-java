@@ -1,56 +1,44 @@
 package br.com.bartie.apiTest.core;
 
-import java.util.List;
-
 import org.junit.jupiter.api.extension.ExtendWith;
 
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.mockito.Mockito.when;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import br.com.bartie.api.v1.services.PersonServices;
 import br.com.bartie.app.core.ModelEntity;
-import br.com.bartie.app.core.ModelMock;
+import br.com.bartie.app.core.ModelDTO;
 
 @ExtendWith(MockitoExtension.class)
-public abstract class ModelApiServiceTest
-     <Mocked extends ModelMock<T, DTO>,
-      Repo extends JpaRepository<T, Long>, T extends ModelEntity, DTO>
+public abstract class ModelApiServiceTest<
+    Repo extends JpaRepository<T, Long>,
+    T extends ModelEntity,
+    DTO extends ModelDTO<DTO>>
 {
 
-    Mocked mock;
+    public ModelUnitTest<T, DTO> checker;
 
-    @InjectMocks
-    PersonServices service;
-
-    @Mock
-    Repo repository;
-
-    protected void setMock(Mocked mock) {
-        this.mock = mock;
+    protected void setChecker(ModelUnitTest<T, DTO> checker) {
+        this.checker = checker;
         MockitoAnnotations.openMocks(this);
     }
 
-    public void FindListPerson() {
+    public void FindAll() {
 
         // Arrange
 
-        List<T> input = mock.getList(25);
+        // List<T> input = checker.mock.getList(25);
 
-        when(repository.findAll()).thenReturn(input);
+        // when(repository.findAll()).thenReturn(input);
 
         // Act
 
-        // var output = service.findAll();
+        // List<DTO> output = service.findAll();
 
         // Assert
 
-        // PersonAssert.checkList(output, 25);
+        // checker.checkList(output, 25);
 
     }
 

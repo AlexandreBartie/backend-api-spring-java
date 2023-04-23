@@ -8,8 +8,21 @@ import java.util.List;
 
 import br.com.bartie.app.core.ModelDTO;
 import br.com.bartie.app.core.ModelEntity;
+import br.com.bartie.app.core.ModelMock;
 
-public abstract class ModelAssert<T extends ModelEntity, DTO extends ModelDTO<DTO>> {
+public abstract class ModelUnitTest<T extends ModelEntity, DTO extends ModelDTO<DTO>> {
+
+    ModelMock<T, DTO> mock;
+
+    // @InjectMocks
+    // PersonServices service;
+
+    // @Mock
+    // Repo repository;
+
+    public ModelUnitTest(ModelMock<T, DTO> mock) {
+        this.mock = mock;
+    }
 
     public abstract void check(T item);
 
