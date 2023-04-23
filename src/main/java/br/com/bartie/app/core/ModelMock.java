@@ -4,7 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class ModelMock<T extends ModelEntity, DTO> {
-      
+    
+    public final String route;
+    public final String version;
+
+    public ModelMock(String route)
+    {
+        this.route = route;
+        this.version = "v1";
+    }
+
+    public ModelMock(String route, String version)
+    {
+        this.route = route;
+        this.version = version;
+    }
+
     public T get(Long id) {
         return mockEntity(id);
     }

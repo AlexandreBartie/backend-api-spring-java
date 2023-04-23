@@ -14,12 +14,6 @@ public abstract class ModelUnitTest<T extends ModelEntity, DTO extends ModelDTO<
 
     ModelMock<T, DTO> mock;
 
-    // @InjectMocks
-    // PersonServices service;
-
-    // @Mock
-    // Repo repository;
-
     public ModelUnitTest(ModelMock<T, DTO> mock) {
         this.mock = mock;
     }
@@ -46,7 +40,7 @@ public abstract class ModelUnitTest<T extends ModelEntity, DTO extends ModelDTO<
         checkDTO(item);
 
         assertTrue(item.hasLinks(),"Link HATEOAS not found!");
-        assertEquals(String.format("</person/v1/%s>;rel=\"self\"", id), item.getApiLinks());
+        assertEquals(String.format("</%s/%s/%s>;rel=\"self\"", mock.route, mock.version, id), item.getApiLinks());
 
     }
 

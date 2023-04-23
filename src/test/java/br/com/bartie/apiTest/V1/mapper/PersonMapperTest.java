@@ -23,7 +23,7 @@ public class PersonMapperTest {
     }
 
     @Test
-    public void parseEntityToVOTest() {
+    public void parseEntityToDTO() {
 
         // Arrange
         
@@ -39,7 +39,7 @@ public class PersonMapperTest {
     }
 
     @Test
-    public void parseEntityListToVOListTest() {
+    public void parseEntityToDTOList() {
         
         // Arrange
 
@@ -62,7 +62,7 @@ public class PersonMapperTest {
     }
 
     @Test
-    public void parseVOToEntityTest() {
+    public void parseDTOtoEntity() {
 
         // Arrange
         
@@ -79,7 +79,7 @@ public class PersonMapperTest {
     }
 
     @Test
-    public void parserVOListToEntityListTest() {
+    public void parseDTOtoEntityList() {
 
         // Arrange
 

@@ -19,45 +19,45 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import br.com.bartie.app.exceptions.RequiredObjectIsNullException;
 
-import br.com.bartie.api.v1.services.PersonServices;
-import br.com.bartie.api.v1.view.PersonDTO;
-import br.com.bartie.apiTest.V1.check.PersonTest;
-import br.com.bartie.apiTest.V1.mock.PersonMock;
-import br.com.bartie.data.model.Person;
-import br.com.bartie.data.repository.PersonRepository;
+import br.com.bartie.api.v1.services.BookServices;
+import br.com.bartie.api.v1.view.BookDTO;
+import br.com.bartie.apiTest.V1.check.BookTest;
+import br.com.bartie.apiTest.V1.mock.BookMock;
+import br.com.bartie.data.model.Book;
+import br.com.bartie.data.repository.BookRepository;
 
 @TestInstance(Lifecycle.PER_CLASS)
 @ExtendWith(MockitoExtension.class)
-public class PersonServicesTest {
+public class BookServicesTest {
 
-    PersonMock mock;
+    BookMock mock;
 
-    PersonTest checker = new PersonTest();
+    BookTest checker = new BookTest();
 
     @InjectMocks
-    private PersonServices service;
+    private BookServices service;
 
     @Mock
-    PersonRepository repository;
+    BookRepository repository;
 
     @BeforeEach
     public void setUp() {
-        mock = new PersonMock();
+        mock = new BookMock();
         MockitoAnnotations.openMocks(this);
     }
 
     @Test
-    public void FindListPerson() {
+    public void FindListBook() {
 
         // Arrange
 
-        List<Person> input = mock.getList(25);
+        List<Book> input = mock.getList(25);
 
         when(repository.findAll()).thenReturn(input);
 
         // Act
 
-        List<PersonDTO> output = service.findAll();
+        List<BookDTO> output = service.findAll();
 
         // Assert
 
@@ -66,17 +66,17 @@ public class PersonServicesTest {
     }
 
     @Test
-    public void FindPerson() {
+    public void FindBook() {
 
         // Arrange
 
-        Person input = mock.get(2L);
+        Book input = mock.get(2L);
 
         when(repository.findById(input.getId())).thenReturn(Optional.of(input));
 
         // Act
 
-        PersonDTO output = service.find(input.getId());
+        BookDTO output = service.find(input.getId());
 
         // Assert
 
@@ -85,17 +85,17 @@ public class PersonServicesTest {
     }
 
     @Test
-    public void CreatePerson() {
+    public void CreateBook() {
 
         // Arrange
 
-        Person input = mock.get(10L);
+        Book input = mock.get(10L);
 
         when(repository.save(input)).thenReturn(input);
 
         // Act
 
-        PersonDTO output = service.create(input);
+        BookDTO output = service.create(input);
 
         // Assert
 
@@ -104,17 +104,17 @@ public class PersonServicesTest {
     }
 
     @Test
-    public void UpdatePerson() {
+    public void UpdateBook() {
 
         // Arrange
 
-        Person input = mock.get(14L);
+        Book input = mock.get(14L);
 
         when(repository.save(input)).thenReturn(input);
 
         // Act
 
-        PersonDTO output = service.update(input);
+        BookDTO output = service.update(input);
 
         // Assert
 
@@ -123,11 +123,11 @@ public class PersonServicesTest {
     }
 
     @Test
-    public void DeletePerson() {
+    public void DeleteBook() {
 
         // Arrange
 
-        Person input = mock.get(7L);
+        Book input = mock.get(7L);
 
         when(repository.findById(input.getId())).thenReturn(Optional.of(input));
 
@@ -138,11 +138,11 @@ public class PersonServicesTest {
     }
 
     @Test
-    public void CreatePersonIsNull() {
+    public void CreateBookIsNull() {
 
         // Arrange
 
-        Person input = null;
+        Book input = null;
 
         // Act
 
@@ -161,7 +161,7 @@ public class PersonServicesTest {
 
         // Arrange
 
-        Person input = null;
+        Book input = null;
 
         // Act
 

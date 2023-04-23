@@ -1,6 +1,6 @@
-package br.com.bartie.app.converters;
+package br.com.bartie.app.util;
 
-public class NumberConverter {
+public class NumberUtils {
 
     public static Double toDouble(String strNumber) {
         if (isValid(strNumber)) {

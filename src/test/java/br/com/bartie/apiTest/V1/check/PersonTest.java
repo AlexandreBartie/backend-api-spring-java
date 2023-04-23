@@ -11,9 +11,11 @@ import br.com.bartie.data.model.Person;
 import br.com.bartie.api.v1.view.PersonDTO;
 
 public class PersonTest extends ModelUnitTest<Person, PersonDTO> {
- 
+
     public PersonTest()
-    { super(new PersonMock());}
+    { 
+        super(new PersonMock());
+    }
 
     public void check(Person person)
     {

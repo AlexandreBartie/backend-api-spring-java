@@ -8,6 +8,11 @@ import br.com.bartie.data.model.Person;
 
 public class PersonMock extends ModelMock<Person, PersonDTO> {
 
+    public PersonMock()
+    {
+        super("person");
+    }
+
     public Person mockEntity(Long number) {
         Person person = new Person();
         person.setId(number);
