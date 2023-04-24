@@ -3,12 +3,11 @@ package br.com.bartie.apiTest.V1.check;
 import static org.junit.jupiter.api.Assertions.*;
 
 import br.com.bartie.apiTest.core.ModelUnitTest;
-
+import br.com.bartie.api.v1.dto.BookDTO;
 import br.com.bartie.apiTest.V1.data.BookData;
 import br.com.bartie.apiTest.V1.mock.BookMock;
 
 import br.com.bartie.data.model.Book;
-import br.com.bartie.api.v1.view.BookDTO;
 
 public class BookTest extends ModelUnitTest<Book, BookDTO> {
  

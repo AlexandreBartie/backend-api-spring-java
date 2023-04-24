@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import br.com.bartie.configs.TestConfigs;
+import br.com.bartie.config.TestConfig;
 import br.com.bartie.integrationtests.testcontainers.AbstractIntegrationTest;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
@@ -17,7 +17,7 @@ public class SwaggerIntegrationTest extends AbstractIntegrationTest{
 		var content =
 			given()
 				.basePath("/swagger-ui/index.html")
-				.port(TestConfigs.SERVER_PORT)
+				.port(TestConfig.SERVER_PORT)
 				.when()
 					.get()
 				.then()

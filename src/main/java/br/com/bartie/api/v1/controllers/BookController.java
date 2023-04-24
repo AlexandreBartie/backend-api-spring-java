@@ -1,7 +1,7 @@
 package br.com.bartie.api.v1.controllers;
 
+import br.com.bartie.api.v1.dto.BookDTO;
 import br.com.bartie.api.v1.services.BookServices;
-import br.com.bartie.api.v1.view.BookDTO;
 import br.com.bartie.app.serialization.MediaType;
 
 import java.util.List;

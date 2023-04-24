@@ -5,8 +5,8 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import br.com.bartie.api.v1.dto.PersonDTO;
 import br.com.bartie.api.v1.mapper.PersonMapper;
-import br.com.bartie.api.v1.view.PersonDTO;
 import br.com.bartie.apiTest.V1.check.PersonTest;
 import br.com.bartie.apiTest.V1.mock.PersonMock;
 import br.com.bartie.data.model.Person;

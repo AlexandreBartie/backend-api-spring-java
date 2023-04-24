@@ -1,8 +1,7 @@
 package br.com.bartie.apiTest.V1.mock;
 
 import br.com.bartie.app.core.ModelMock;
-
-import br.com.bartie.api.v1.view.BookDTO;
+import br.com.bartie.api.v1.dto.BookDTO;
 import br.com.bartie.apiTest.V1.data.BookData;
 import br.com.bartie.data.model.Book;
 

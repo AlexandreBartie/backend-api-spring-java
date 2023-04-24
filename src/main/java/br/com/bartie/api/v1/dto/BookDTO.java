@@ -1,4 +1,4 @@
-package br.com.bartie.api.v1.view;
+package br.com.bartie.api.v1.dto;
 
 import java.util.Date;
 
