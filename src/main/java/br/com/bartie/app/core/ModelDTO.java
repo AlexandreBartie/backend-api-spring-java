@@ -21,14 +21,4 @@ public class ModelDTO<DTO extends RepresentationModel<? extends DTO>> extends Re
     @JsonIgnore
 	public String getApiLinks() { return getLinks().toString(); } 
 
-    // @JsonIgnore
-    // public Long getId() {
-    //     return id;
-    // }
-    
-    // @JsonIgnore
-    // public void setId(Long id) {
-    //     this.id = id;
-    // }
-
 }

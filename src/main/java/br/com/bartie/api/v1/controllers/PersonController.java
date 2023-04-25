@@ -8,7 +8,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -52,7 +51,7 @@ public class PersonController {
         return service.findAll();
     }
     
-    @CrossOrigin(origins = "http:\\localhost:8080")
+    // @CrossOrigin(origins = "http:\\localhost:8080")
     @GetMapping(value = "/{id}", 
         produces = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML })
     @Operation(summary = "Find a Person", tags = { "Person" },
@@ -67,7 +66,11 @@ public class PersonController {
     public PersonDTO find(@PathVariable(value = "id") Long id) {
         return service.find(id);
     }
-
+           
+    // @CrossOrigin(origins = {"http://localhost:8080", "https://bartie.com.br"})
+    @PostMapping(
+        consumes = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML }, 
+        produces = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML }) 
     @Operation(summary = "Add new Person", description = "Add new Person using JSON, XML or YML layouts", tags = { "Person" },
         responses = {
             @ApiResponse(description = "Created", responseCode = "200",
@@ -76,11 +79,6 @@ public class PersonController {
             @ApiResponse(description = "Unauthorized", responseCode = "401", content = { @Content }),
             @ApiResponse(description = "Internal Error", responseCode = "500", content = { @Content }),                                    
             })
-            
-    @CrossOrigin(origins = {"http://localhost:8080", "https://bartie.com.br"})
-    @PostMapping(
-        consumes = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML }, 
-        produces = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML }) 
     public PersonDTO create(@RequestBody PersonDTO person) {
         return service.create(person);
     }
