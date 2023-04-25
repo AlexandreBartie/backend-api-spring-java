@@ -17,7 +17,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import br.com.bartie.api.v1.view.PersonView;
 import br.com.bartie.config.TestConfig;
-import br.com.bartie.integrationtests.testcontainers.AbstractIntegrationTest;
+import br.com.bartie.integrationtests.containers.AbstractIntegrationTest;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.filter.log.LogDetail;
 import io.restassured.filter.log.RequestLoggingFilter;

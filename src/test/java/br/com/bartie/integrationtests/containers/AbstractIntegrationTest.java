@@ -1,4 +1,4 @@
-package br.com.bartie.integrationtests.testcontainers;
+package br.com.bartie.integrationtests.containers;
 
 import java.util.Map;
 import java.util.stream.Stream;
@@ -22,7 +22,7 @@ public class AbstractIntegrationTest {
 			Startables.deepStart(Stream.of(mysql)).join();
 		}
 
-		private static Map<String, String> createConnectionConfiguration() {
+		private static Map<String, String> connectionDB() {
 			return Map.of(
 				"spring.datasource.url", mysql.getJdbcUrl(),
 				"spring.datasource.username", mysql.getUsername(),
@@ -34,11 +34,11 @@ public class AbstractIntegrationTest {
 		@Override
 		public void initialize(ConfigurableApplicationContext applicationContext) {
 			startContainers();
-			ConfigurableEnvironment environment = applicationContext.getEnvironment();
-			MapPropertySource testcontainers = new MapPropertySource(
-				"testcontainers",
-				(Map) createConnectionConfiguration());
-			environment.getPropertySources().addFirst(testcontainers);
+			ConfigurableEnvironment env = applicationContext.getEnvironment();
+			MapPropertySource container = new MapPropertySource(
+				"Java",
+				(Map) connectionDB());
+			env.getPropertySources().addFirst(container);
 		}
 	}
 }

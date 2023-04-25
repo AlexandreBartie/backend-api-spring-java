@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import br.com.bartie.config.TestConfig;
-import br.com.bartie.integrationtests.testcontainers.AbstractIntegrationTest;
+import br.com.bartie.integrationtests.containers.AbstractIntegrationTest;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 public class SwaggerIntegrationTest extends AbstractIntegrationTest{

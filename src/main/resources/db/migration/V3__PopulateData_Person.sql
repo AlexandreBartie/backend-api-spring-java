@@ -1,4 +1,4 @@
-INSERT INTO Java.person (first_name,last_name,address,gender) VALUES
+INSERT INTO person (first_name,last_name,address,gender) VALUES
 	 ('Alex#1','Bartie#1','Adress#New','#New'),
 	 ('Alex#2','Bartie#2','Adress#New','#New'),
 	 ('FistName#Changed','LastName#Changed','Adress#Changed','#Changed'),
@@ -9,7 +9,7 @@ INSERT INTO Java.person (first_name,last_name,address,gender) VALUES
 	 ('FistName#Created','LastName#Created','Adress#Created','Created'),
 	 ('FistName#Created','LastName#Created','Adress#Created','Created'),
 	 ('FistName#Created','LastName#Created','Adress#Created','Created');
-INSERT INTO Java.person (first_name,last_name,address,gender) VALUES
+INSERT INTO person (first_name,last_name,address,gender) VALUES
 	 ('FistName#Created','LastName#Created','Adress#Created','Created'),
 	 ('FistName#Created','LastName#Created','Adress#Created','Created'),
 	 ('Dedrick','McCullough','{{$randomAddress}}','Male'),
@@ -20,6 +20,6 @@ INSERT INTO Java.person (first_name,last_name,address,gender) VALUES
 	 ('Felix','Greenfelder','17512 Bartholome Loop, 643, South Ryann, Eritrea','Male'),
 	 ('John','Kuphal','6403 Pagac Islands, 689, Macon-Bibb County, Colombia','Male'),
 	 ('FistName#Changed','LastName#Changed','Adress#Changed','Changed');
-INSERT INTO Java.person (first_name,last_name,address,gender) VALUES
+INSERT INTO person (first_name,last_name,address,gender) VALUES
 	 ('FistName#Changed','LastName#Changed','Adress#Changed','Changed'),
 	 ('FistName#Changed','LastName#Changed','Adress#Changed','Changed');
