@@ -1,4 +1,4 @@
-package br.com.bartie.apiTest.V1.services;
+package br.com.bartie.apiTest.unitTest.V1.services;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
@@ -20,8 +20,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import br.com.bartie.app.exceptions.RequiredObjectIsNullException;
 import br.com.bartie.api.v1.dto.BookDTO;
 import br.com.bartie.api.v1.services.BookServices;
-import br.com.bartie.apiTest.V1.check.BookTest;
-import br.com.bartie.apiTest.V1.mock.BookMock;
+import br.com.bartie.apiTest.unitTest.V1.check.BookTest;
+import br.com.bartie.apiTest.unitTest.V1.mock.BookMock;
 import br.com.bartie.data.model.Book;
 import br.com.bartie.data.repository.BookRepository;
 

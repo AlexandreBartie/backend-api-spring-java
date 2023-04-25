@@ -1,4 +1,4 @@
-package br.com.bartie.integrationtests.controller;
+package br.com.bartie.apiTest.integrationTest.controller;
 
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.*;
@@ -16,8 +16,8 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import br.com.bartie.api.v1.view.PersonView;
+import br.com.bartie.apiTest.core.ModelIntegrationTest;
 import br.com.bartie.config.TestConfig;
-import br.com.bartie.integrationtests.containers.AbstractIntegrationTest;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.filter.log.LogDetail;
 import io.restassured.filter.log.RequestLoggingFilter;
@@ -26,7 +26,7 @@ import io.restassured.specification.RequestSpecification;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @TestMethodOrder(OrderAnnotation.class)
-public class PersonControllerTest extends AbstractIntegrationTest{
+public class PersonControllerTest extends ModelIntegrationTest{
 
 	private static RequestSpecification action;
 

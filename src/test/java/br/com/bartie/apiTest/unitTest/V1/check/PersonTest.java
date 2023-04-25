@@ -1,12 +1,11 @@
-package br.com.bartie.apiTest.V1.check;
+package br.com.bartie.apiTest.unitTest.V1.check;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import br.com.bartie.apiTest.core.ModelUnitTest;
 import br.com.bartie.api.v1.dto.PersonDTO;
-import br.com.bartie.apiTest.V1.data.PersonData;
-import br.com.bartie.apiTest.V1.mock.PersonMock;
-
+import br.com.bartie.apiTest.core.ModelUnitTest;
+import br.com.bartie.apiTest.unitTest.V1.data.PersonData;
+import br.com.bartie.apiTest.unitTest.V1.mock.PersonMock;
 import br.com.bartie.data.model.Person;
 
 public class PersonTest extends ModelUnitTest<Person, PersonDTO> {

@@ -1,4 +1,4 @@
-package br.com.bartie.apiTest.V1.services;
+package br.com.bartie.apiTest.unitTest.V1.services;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
@@ -20,8 +20,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import br.com.bartie.app.exceptions.RequiredObjectIsNullException;
 import br.com.bartie.api.v1.dto.PersonDTO;
 import br.com.bartie.api.v1.services.PersonServices;
-import br.com.bartie.apiTest.V1.check.PersonTest;
-import br.com.bartie.apiTest.V1.mock.PersonMock;
+import br.com.bartie.apiTest.unitTest.V1.check.PersonTest;
+import br.com.bartie.apiTest.unitTest.V1.mock.PersonMock;
 import br.com.bartie.data.model.Person;
 import br.com.bartie.data.repository.PersonRepository;
 

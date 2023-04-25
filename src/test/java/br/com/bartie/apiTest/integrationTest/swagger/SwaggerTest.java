@@ -1,4 +1,4 @@
-package br.com.bartie.integrationtests.swagger;
+package br.com.bartie.apiTest.integrationTest.swagger;
 
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.*;
@@ -6,11 +6,11 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import br.com.bartie.apiTest.core.ModelIntegrationTest;
 import br.com.bartie.config.TestConfig;
-import br.com.bartie.integrationtests.containers.AbstractIntegrationTest;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
-public class SwaggerIntegrationTest extends AbstractIntegrationTest{
+public class SwaggerTest extends ModelIntegrationTest{
 
 	@Test
 	public void shouldDisplaySwaggerUiPage() {

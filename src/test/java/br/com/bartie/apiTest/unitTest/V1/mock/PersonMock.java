@@ -1,8 +1,8 @@
-package br.com.bartie.apiTest.V1.mock;
+package br.com.bartie.apiTest.unitTest.V1.mock;
 
 import br.com.bartie.app.core.ModelMock;
 import br.com.bartie.api.v1.dto.PersonDTO;
-import br.com.bartie.apiTest.V1.data.PersonData;
+import br.com.bartie.apiTest.unitTest.V1.data.PersonData;
 import br.com.bartie.data.model.Person;
 
 public class PersonMock extends ModelMock<Person, PersonDTO> {

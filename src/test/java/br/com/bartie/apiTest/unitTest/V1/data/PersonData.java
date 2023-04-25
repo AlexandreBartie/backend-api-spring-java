@@ -1,4 +1,4 @@
-package br.com.bartie.apiTest.V1.data;
+package br.com.bartie.apiTest.unitTest.V1.data;
 
 public class PersonData {
 

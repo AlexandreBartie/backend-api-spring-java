@@ -1,4 +1,4 @@
-package br.com.bartie.integrationtests.containers;
+package br.com.bartie.apiTest.core;
 
 import java.util.Map;
 import java.util.stream.Stream;
@@ -11,8 +11,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.testcontainers.containers.MySQLContainer;
 import org.testcontainers.lifecycle.Startables;
 
-@ContextConfiguration(initializers = AbstractIntegrationTest.Initializer.class)
-public class AbstractIntegrationTest {
+@ContextConfiguration(initializers = ModelIntegrationTest.Initializer.class)
+public class ModelIntegrationTest {
 
 	static class Initializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
 		

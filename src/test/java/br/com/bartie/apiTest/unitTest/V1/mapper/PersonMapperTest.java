@@ -1,4 +1,4 @@
-package br.com.bartie.apiTest.V1.mapper;
+package br.com.bartie.apiTest.unitTest.V1.mapper;
 
 import java.util.List;
 
@@ -7,8 +7,8 @@ import org.junit.jupiter.api.Test;
 
 import br.com.bartie.api.v1.dto.PersonDTO;
 import br.com.bartie.api.v1.mapper.PersonMapper;
-import br.com.bartie.apiTest.V1.check.PersonTest;
-import br.com.bartie.apiTest.V1.mock.PersonMock;
+import br.com.bartie.apiTest.unitTest.V1.check.PersonTest;
+import br.com.bartie.apiTest.unitTest.V1.mock.PersonMock;
 import br.com.bartie.data.model.Person;
 
 public class PersonMapperTest {
