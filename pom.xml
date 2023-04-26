@@ -16,6 +16,7 @@
 
 	<properties>
 		<java.version>20</java.version>
+		<java-jwt.version>4.4.0</java-jwt.version>
 		<mysql.version>8.0.29</mysql.version>
 		<lombok.version>1.18.26</lombok.version>		
 		<mapper.version>3.1.1</mapper.version>
@@ -27,6 +28,7 @@
 	</properties>
 	
 	<dependencies>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
@@ -37,6 +39,11 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 
 		<dependency>
@@ -64,6 +71,12 @@
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
 			<version>${springdoc.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.auth0</groupId>
+			<artifactId>java-jwt</artifactId>
+			<version>${java-jwt.version}</version>
 		</dependency>
 
 		<dependency>
